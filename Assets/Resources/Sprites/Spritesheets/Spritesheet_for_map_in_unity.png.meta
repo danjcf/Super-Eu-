@@ -1,0 +1,797 @@
+fileFormatVersion: 2
+guid: d4c9117703fc0ac4fac099cebe0f11fa
+timeCreated: 1519158510
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Spritesheet_for_map_in_unity_0
+    21300002: Spritesheet_for_map_in_unity_1
+    21300004: Spritesheet_for_map_in_unity_2
+    21300006: Spritesheet_for_map_in_unity_3
+    21300008: Spritesheet_for_map_in_unity_4
+    21300010: Spritesheet_for_map_in_unity_5
+    21300012: Spritesheet_for_map_in_unity_6
+    21300014: Spritesheet_for_map_in_unity_7
+    21300016: Spritesheet_for_map_in_unity_8
+    21300018: Spritesheet_for_map_in_unity_9
+    21300020: Spritesheet_for_map_in_unity_10
+    21300022: Spritesheet_for_map_in_unity_11
+    21300024: Spritesheet_for_map_in_unity_12
+    21300026: Spritesheet_for_map_in_unity_13
+    21300028: Spritesheet_for_map_in_unity_14
+    21300030: Spritesheet_for_map_in_unity_15
+    21300032: Spritesheet_for_map_in_unity_16
+    21300034: Spritesheet_for_map_in_unity_17
+    21300036: Spritesheet_for_map_in_unity_18
+    21300038: Spritesheet_for_map_in_unity_19
+    21300040: Spritesheet_for_map_in_unity_20
+    21300042: Spritesheet_for_map_in_unity_21
+    21300044: Spritesheet_for_map_in_unity_22
+    21300046: Spritesheet_for_map_in_unity_23
+    21300048: Spritesheet_for_map_in_unity_24
+    21300050: Spritesheet_for_map_in_unity_25
+    21300052: Spritesheet_for_map_in_unity_26
+    21300054: Spritesheet_for_map_in_unity_27
+    21300056: Spritesheet_for_map_in_unity_28
+    21300058: Spritesheet_for_map_in_unity_29
+    21300060: Spritesheet_for_map_in_unity_30
+    21300062: Spritesheet_for_map_in_unity_31
+    21300064: Spritesheet_for_map_in_unity_32
+    21300066: Spritesheet_for_map_in_unity_33
+    21300068: Spritesheet_for_map_in_unity_34
+    21300070: Spritesheet_for_map_in_unity_35
+    21300072: Spritesheet_for_map_in_unity_36
+    21300074: Spritesheet_for_map_in_unity_37
+    21300076: Spritesheet_for_map_in_unity_38
+    21300078: Spritesheet_for_map_in_unity_39
+    21300080: Spritesheet_for_map_in_unity_40
+    21300082: Spritesheet_for_map_in_unity_41
+    21300084: Spritesheet_for_map_in_unity_42
+    21300086: Spritesheet_for_map_in_unity_43
+    21300088: Spritesheet_for_map_in_unity_44
+    21300090: Spritesheet_for_map_in_unity_45
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 248
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 248
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 248
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 240
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_5
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 264
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_6
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 264
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_7
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 264
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 264
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_9
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 259
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_10
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 214
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_11
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 247
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_12
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 247
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_13
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 247
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_14
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 247
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 215
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_16
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 215
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_17
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 215
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 219
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_19
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 219
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_20
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 218
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_21
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 211
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_22
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 230
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_23
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 230
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_24
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 221
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 166
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_26
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 166
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_27
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 166
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_28
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 166
+        width: 56
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 168
+        width: 31
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_30
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 133
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_31
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 192
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_32
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 161
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 107
+        width: 85
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_34
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 133
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_35
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 138
+        width: 27
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_36
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 105
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_38
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 87
+        width: 63
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_39
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 100
+        width: 63
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_40
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 92
+        width: 27
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_41
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 36
+        width: 42
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_42
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 46
+        width: 56
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_43
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 42
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_44
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 38
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Spritesheet_for_map_in_unity_45
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 71
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

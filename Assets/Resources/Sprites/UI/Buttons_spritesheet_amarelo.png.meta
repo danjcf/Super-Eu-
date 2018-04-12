@@ -1,0 +1,707 @@
+fileFormatVersion: 2
+guid: 2b94af4bd9dd16f4bb8fa2cbf72fa2f2
+timeCreated: 1520552290
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Close_button_yellow
+    21300002: right_arrow_yellow
+    21300004: left_arrow_yellow
+    21300006: arrow_down_yellow
+    21300008: Textbox_small_yellow
+    21300010: Textbox_large_yellow
+    21300012: Buttons_spritesheet_amarelo_6
+    21300014: Buttons_spritesheet_amarelo_7
+    21300016: Buttons_spritesheet_amarelo_8
+    21300018: Buttons_spritesheet_amarelo_9
+    21300020: Buttons_spritesheet_amarelo_10
+    21300022: Input_field_yellow
+    21300024: arrow_up_yellow
+    21300026: Buttons_spritesheet_amarelo_13
+    21300028: Buttons_spritesheet_amarelo_14
+    21300030: Buttons_spritesheet_amarelo_15
+    21300032: Button_small_yellow
+    21300034: Quest_yellow
+    21300036: Buttons_spritesheet_amarelo_18
+    21300038: Buttons_spritesheet_amarelo_19
+    21300040: Buttons_spritesheet_amarelo_20
+    21300042: Button_medium_yellow
+    21300044: tick_box_yellow
+    21300046: Textbox_medium_yellow
+    21300048: Buttons_spritesheet_amarelo_24
+    21300050: Buttons_spritesheet_amarelo_25
+    21300052: Buttons_spritesheet_amarelo_26
+    21300054: Button_large_yellow
+    21300056: tick_box_filled_yellow
+    21300058: Textbox_large_blue
+    21300060: Buttons_spritesheet_amarelo_30
+    21300062: Buttons_spritesheet_amarelo_31
+    21300064: Button_verylarge_yellow
+    21300066: slider_yellow
+    21300068: Buttons_spritesheet_amarelo_34
+    21300070: Buttons_spritesheet_amarelo_35
+    21300072: slider_box_yellow
+    21300074: Textbox_small_blue
+    21300076: Buttons_spritesheet_amarelo_38
+    21300078: Textbox_medium_blue
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Close_button_yellow
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 243
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: right_arrow_yellow
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 243
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: left_arrow_yellow
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 243
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arrow_down_yellow
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 245
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_small_yellow
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 213
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_large_yellow
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 194
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_6
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 243
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 243
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 243
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_9
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 245
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_10
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 245
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Input_field_yellow
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 228
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: arrow_up_yellow
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 229
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_13
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 228
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_14
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 227
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_15
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 227
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_small_yellow
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 212
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Quest_yellow
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 210
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_18
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 212
+        width: 42
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_19
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 212
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_20
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 210
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_medium_yellow
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 195
+        width: 44
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tick_box_yellow
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 196
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_medium_yellow
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_24
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 195
+        width: 44
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_25
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 196
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_26
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 193
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_large_yellow
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 178
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tick_box_filled_yellow
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 180
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_large_blue
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 130
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_30
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 178
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_31
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 177
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_verylarge_yellow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 161
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slider_yellow
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 161
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_34
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 161
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_35
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 164
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slider_box_yellow
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 145
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_small_blue
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 117
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Buttons_spritesheet_amarelo_38
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 149
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Textbox_medium_blue
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

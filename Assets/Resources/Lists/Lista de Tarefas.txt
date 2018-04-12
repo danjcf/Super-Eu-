@@ -1,0 +1,24 @@
+Manhã
+Preparar o pequeno-almoço	Vai ao frigorífico e ajuda a tua familia a preparar o pequeno-almoço!	10	Fridge
+Tomar o pequeno-almoço	Vai até à mesa para tomares o teu pequeno-almoço para começares bem o teu Super dia!	10	Kitchen table
+Tomar banho	Vai até ao chuveiro da tua casa de banho para tomares banho!	10	Shower
+Lavar os dentes	Vai até ao lavatório da casa de banho para lavares os dentes.	5	Bathroom Sink 
+Escovar o cabelo	Vai à casa de banho para escovares o cabelo.	5	Bathroom Sink 
+Vestir	Vai ao teu quarto para te vestires e ficas pronto para o teu Super dia!	5	Kid Bedside Table
+Preparar a mochila da escola	Arranja a tua mochila com o material que precisas para a escola.	5	Desk with laptop
+Tarde
+Arrumar os brinquedos
+Vestir o pijama
+Ir para a cama 
+Fazer os T.P.C   
+Almoçar
+Jantar
+Lanchar 
+Fazer a cama 
+Preparar a roupa para o dia seguinte
+Escovar o cão / Escovar o gato
+Dar comida ao cão/gato
+Por a mesa
+Levantar a mesa
+Limpar o quarto
+Estudar

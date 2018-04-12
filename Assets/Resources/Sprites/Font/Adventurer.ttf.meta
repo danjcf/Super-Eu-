@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ec2b9d93ac852e24d94ca241f673cc0a
+timeCreated: 1511608550
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Adventurer
+  fontNames:
+  - Adventurer
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

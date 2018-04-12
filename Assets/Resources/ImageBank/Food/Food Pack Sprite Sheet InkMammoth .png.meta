@@ -1,0 +1,482 @@
+fileFormatVersion: 2
+guid: 885930a5ad8816a4ab5079ade23aab20
+timeCreated: 1521559208
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Food Pack Sprite Sheet InkMammoth _0
+    21300002: Food Pack Sprite Sheet InkMammoth _1
+    21300004: Food Pack Sprite Sheet InkMammoth _2
+    21300006: Food Pack Sprite Sheet InkMammoth _3
+    21300008: Food Pack Sprite Sheet InkMammoth _4
+    21300010: Food Pack Sprite Sheet InkMammoth _5
+    21300012: Food Pack Sprite Sheet InkMammoth _6
+    21300014: Food Pack Sprite Sheet InkMammoth _7
+    21300016: Food Pack Sprite Sheet InkMammoth _8
+    21300018: Food Pack Sprite Sheet InkMammoth _9
+    21300020: Food Pack Sprite Sheet InkMammoth _10
+    21300022: Food Pack Sprite Sheet InkMammoth _11
+    21300024: Food Pack Sprite Sheet InkMammoth _12
+    21300026: Food Pack Sprite Sheet InkMammoth _13
+    21300028: Food Pack Sprite Sheet InkMammoth _14
+    21300030: Food Pack Sprite Sheet InkMammoth _15
+    21300032: Food Pack Sprite Sheet InkMammoth _16
+    21300034: Food Pack Sprite Sheet InkMammoth _17
+    21300036: Food Pack Sprite Sheet InkMammoth _18
+    21300038: Food Pack Sprite Sheet InkMammoth _19
+    21300040: Food Pack Sprite Sheet InkMammoth _20
+    21300042: Food Pack Sprite Sheet InkMammoth _21
+    21300044: Food Pack Sprite Sheet InkMammoth _22
+    21300046: Food Pack Sprite Sheet InkMammoth _23
+    21300048: Food Pack Sprite Sheet InkMammoth _24
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 131
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 131
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 130
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 129
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 129
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 97
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _6
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 97
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _7
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 99
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 101
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _9
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 97
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 66
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _11
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 66
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _12
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 66
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _13
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 66
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _14
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 66
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _15
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 34
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _16
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 33
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _17
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 34
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _18
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 34
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _19
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 34
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 4
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _21
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _22
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 2
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Food Pack Sprite Sheet InkMammoth _24
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 5
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
