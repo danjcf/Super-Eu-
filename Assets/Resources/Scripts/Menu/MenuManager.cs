@@ -77,6 +77,22 @@ public class MenuManager : MonoBehaviour {
 			current_menu++;
 			Set_next_menu (Menus, 5);
 			break;
+		case 6:
+			current_menu++;
+			Set_next_menu (Menus, 6);
+			break;
+		case 7:
+			current_menu++;
+			Set_next_menu (Menus, 7);
+			break;
+		case 8:
+			current_menu++;
+			Set_next_menu (Menus, 8);
+			break;
+		case 9:
+			current_menu++;
+			Set_next_menu (Menus, 9);
+			break;
 		default:
 			break;
 		}
@@ -106,7 +122,22 @@ public class MenuManager : MonoBehaviour {
 				current_menu--;
 				Set_previous_menu(Menus, 4);
 				break;
-            
+			case 5:
+				current_menu--;
+				Set_next_menu (Menus, 5);
+				break;
+			case 6:
+				current_menu--;
+				Set_next_menu (Menus, 6);
+				break;
+			case 7:
+				current_menu--;
+				Set_next_menu (Menus, 7);
+				break;
+			case 8:
+				current_menu--;
+				Set_next_menu (Menus, 8);
+				break;
         }
     }
 

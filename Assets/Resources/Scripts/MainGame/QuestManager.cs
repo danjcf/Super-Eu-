@@ -17,21 +17,32 @@ public class QuestManager : MonoBehaviour {
 	public GameObject[] QuestMarkers;
 	public GameObject QuestWindow;
 	public PlayerController player;
+	public bool inMinigame;
 
 	// Use this for initialization
 	void Awake () {
+		inMinigame = false;
 		QuestWindow.SetActive(false);
 		QuestBox = GameObject.Find ("Quest Box").GetComponentInChildren<Text>();
 		CreateListOfQuests ();
-        
+		PlayerPrefs.SetInt ("inMinigame", 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		SetButtonCurrentQuest ();
+		if (PlayerPrefs.GetInt("inMinigame") == 0) {
+			SetButtonCurrentQuest ();
+			print ("Quest Completed - " + PlayerPrefs.GetInt ("QuestCompleted"));
+	
+		}
+		//if(SceneManager.activeSceneChanged
+
 	}
 
+	
+
 	void CreateListOfQuests(){ 																				//função que lê o ficheiro com a lista de tarefas e transforma em quests (usando o prefab da quest)
+		PlayerPrefs.SetInt("QuestCompleted", 0);
 		List<string> quests_name = AlternativeReadFile("Lista de Tarefas");
 		if (quests_name.Find (x => x.Contains ("Manhã")) != null) 											//Formato do ficheiro txt: Nome da quest - Descrição da quest - Duração da quest - Objecto onde vai estar a quest 
 		{
@@ -61,7 +72,6 @@ public class QuestManager : MonoBehaviour {
 					quest.questPeriod = foo [2];
 					quest.questObject = foo [3];
 					quest.gameObject.name = "QuestMorning" + morningcounter;
-					quest.isCompleted = false;
 					quest.gameObject.SetActive (false);
 					questsList [counter] = quest;
 					foreach (Button bo in InactiveButtons) {
@@ -84,7 +94,6 @@ public class QuestManager : MonoBehaviour {
 
 					quest.gameObject.name = "QuestAfternoon" + afternooncounter;
 					quest.gameObject.SetActive (false);															//Desativa o objecto, só a primeira quest da lista fica activa
-					quest.isCompleted = false;	
 					questsList [counter] = quest;
 					afternooncounter++;
 				}
@@ -147,7 +156,7 @@ public class QuestManager : MonoBehaviour {
 
 		while(cycle_counter<quest_length)
 		{
-			if (!questsList [cycle_counter].isCompleted) {												//Verifica a primeira quest que não foi completada. Ativa essa quest, apresenta na GUI e sai do ciclo
+			if (PlayerPrefs.GetInt("QuestCompleted") == 0) {												//Verifica a primeira quest que não foi completada. Ativa essa quest, apresenta na GUI e sai do ciclo
 				Quest CurrentQuest = questsList [cycle_counter];
 				questsList [cycle_counter].gameObject.SetActive (true);
 				QuestBox.text = "Próxima Missão:\n" + questsList[cycle_counter].questName;
@@ -169,7 +178,7 @@ public class QuestManager : MonoBehaviour {
 
 		Quest quest_started = CheckCurrentQuest();
 
-		PlayerPrefs.SetString("MemoryGameFolder", /*quest_started.questName*/"TestImages");										//Tipo da Tarefa
+		//PlayerPrefs.SetString("MemoryGameFolder", /*quest_started.questName*/"TestImages");										//Tipo da Tarefa
 		int SpriteCounter = 0;
 		List<int> RandomNumbers;
 		string SpritesToUse = null;
@@ -201,8 +210,12 @@ public class QuestManager : MonoBehaviour {
 		}
 		QuestWindow.SetActive (false);
 		player.isPaused = false;
+		PlayerPrefs.SetInt ("inMinigame", 1);
+		//PlayerPrefs.SetInt ("QuestCompleted", 1);
 		//quest_started.QuestCompleted ();
 		SceneManager.LoadScene ("Match_minigame",LoadSceneMode.Additive);
+
+
 	}
 
 	int Randomizer(List<int> listRandom)
@@ -233,22 +246,22 @@ public class QuestManager : MonoBehaviour {
 
 		if(Application.platform == RuntimePlatform.Android)
 		{
-			print ("entrou Android");
+			
 			directory = "Lists\\" + File_name;
 		}
 		if(Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor){
-			print ("entrou windows");
+			
 			directory = "Lists/" + File_name;
 		}
-		print ("Pasta a aceder:" + directory);
+
 		TextAsset reader = Resources.Load<TextAsset>(directory); 
 
 		List<string> arrayoflines = new List<string> ();
-		print (reader.text.Length);
+
 		string[] linesFromfile = reader.text.Split('\n');
 		foreach (string line in linesFromfile)
 		{
-			//Debug.Log(line);
+			
 			arrayoflines.Add (line);
 		}
 		return arrayoflines;

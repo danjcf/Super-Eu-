@@ -20,7 +20,7 @@ public class CardManager : MonoBehaviour {
 	private float timeClock;
 	private Text timerText;
 	private bool isOnDelay;
-
+	private bool isFinished;
 	// Use this for initialization
 	void Awake () {
 		string folderN = PlayerPrefs.GetString ("MemoryGameFolder");
@@ -32,14 +32,15 @@ public class CardManager : MonoBehaviour {
 		Match_tries = 0;
 		points = 0;
 		isOnDelay = false;
-
+		isFinished = false;
 
 	}
 
 	void Update(){
-		if (Match_counter == 5) {
+		if (Match_counter == 5 && !isFinished) {
 			
 			Invoke ("WinCondition", 1f);
+			isFinished = true;
 		}
 		if (GameWindow.activeSelf && !isOnDelay) {
 			
@@ -114,14 +115,25 @@ public class CardManager : MonoBehaviour {
 
 	public void ReturnMainGame()
 	{
+
+		//QuestManager MainManager = GameObject.Find("Quest Box").GetComponent<QuestManager>();
+		PlayerPrefs.SetInt("inMinigame",0);
+		SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainGame"));
 		SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Match_minigame").buildIndex);
+
+		//StartCoroutine(ChangeScene("MainGame","Match_minigame"));
 	}
 
 	public Image GetItem(Card CardItem){
-		Image[] cardItem = CardItem.GetComponentsInChildren<Image> (true);
-		Image Item = cardItem [1];
-		return Item;
-
+		Image[] cardItem; 
+		Image Item;
+		if (CardItem != null) {
+			cardItem = CardItem.GetComponentsInChildren<Image> (true);
+			Item = cardItem [1];
+			return Item;
+		} else {
+			return null;
+		}
 	}
 
 	void DeactivateItems(){
@@ -212,9 +224,11 @@ public class CardManager : MonoBehaviour {
 	public void ShowImage(Card FlippedCard)
 	{
 		
-		Image tempItem = GetItem (FlippedCard);
-		tempItem.gameObject.SetActive (true);
-
+		Image tempItem;
+		if (FlippedCard != null) {
+			tempItem = GetItem (FlippedCard);
+			tempItem.gameObject.SetActive (true);
+		}
 	}
 
 	void ShowAllCards(Card[] Cards){
@@ -224,8 +238,11 @@ public class CardManager : MonoBehaviour {
 	}
 
 	public void HideImage(Card FlippedCard){
-		Image tempItem = GetItem (FlippedCard);
-		tempItem.gameObject.SetActive (false);
+		Image tempItem;
+		if (FlippedCard != null) {
+			tempItem = GetItem (FlippedCard);
+			tempItem.gameObject.SetActive (false);
+		}
 	}
 
 	void HideAllCards(Card[] Cards){
@@ -236,29 +253,38 @@ public class CardManager : MonoBehaviour {
 
 	public void CheckFlippedCards()
 	{
-		Image FirstCard = GetItem (FlippedCards [0]);
-		Image SecondCard = GetItem (FlippedCards [1]);
-		//print ("Nome primeira carta: " + FirstCard.sprite.name + "Nome segunda carta: " + SecondCard.sprite.name);
-		if (FirstCard.sprite == SecondCard.sprite) {
-			print ("entrou if certo");
-			FlippedCards [0].isMatched = true;
-			FlippedCards [1].isMatched = true;
-			FlippedCards [0] = null;
-			FlippedCards [1] = null;
-			Match_counter++;
-			Match_tries++;
-			UpdatePoints (Match_tries);
-			Match_tries = 0;
+		Image FirstCard = null;
+		Image SecondCard = null;
 
-		} else {
-			print ("entrou if errado");
-			FlippedCards [0].FlipBack ();
-			FlippedCards [1].FlipBack ();
-			FlippedCards [0] = null;
-			FlippedCards [1] = null;
-			Match_tries++;
+		if (FlippedCards [0] != null) {
+			FirstCard = GetItem (FlippedCards [0]);
 		}
-		FlipCardCounter = 0;
+		if (FlippedCards [1] != null) {
+			SecondCard = GetItem (FlippedCards [1]);
+		}
+		//print ("Nome primeira carta: " + FirstCard.sprite.name + "Nome segunda carta: " + SecondCard.sprite.name);
+		if (FirstCard != null && SecondCard != null) {
+			if (FirstCard.sprite == SecondCard.sprite) {
+				print ("entrou if certo");
+				FlippedCards [0].isMatched = true;
+				FlippedCards [1].isMatched = true;
+				FlippedCards [0] = null;
+				FlippedCards [1] = null;
+				Match_counter++;
+				Match_tries++;
+				UpdatePoints (Match_tries);
+				Match_tries = 0;
+
+			} else {
+				print ("entrou if errado");
+				FlippedCards [0].FlipBack ();
+				FlippedCards [1].FlipBack ();
+				FlippedCards [0] = null;
+				FlippedCards [1] = null;
+				Match_tries++;
+			}
+			FlipCardCounter = 0;
+		}
 	}
 
 	void UpdatePoints(int tries)
@@ -294,6 +320,14 @@ public class CardManager : MonoBehaviour {
 		UpdateText.text = "Pontuação - " + points;
 	}
 
+	public static bool IsSceneNameValid(string newSceneN, string oldSceneN){
+		if ((newSceneN != oldSceneN) && SceneManager.GetSceneByName (newSceneN).IsValid () && SceneManager.GetSceneByName (oldSceneN).IsValid ()) {
+			return true;
+		} else
+			return false;
+	}
+
+
 	public IEnumerator DelayCheck()
 	{
 		
@@ -313,6 +347,25 @@ public class CardManager : MonoBehaviour {
 		HideAllCards(CardList);
 		isOnDelay = false;
 		isPaused = false;
+	}
+
+	public static IEnumerator ChangeScene(string newSceneName, string oldSceneName)
+	{
+		/*
+		if (IsSceneNameValid(newSceneName, oldSceneName))
+		{
+			yield return SceneManager.UnloadSceneAsync(oldSceneName);
+		}
+		*/
+
+
+
+		if (IsSceneNameValid(oldSceneName, newSceneName)
+			&& !string.IsNullOrEmpty(newSceneName))
+		{
+			yield return new WaitForEndOfFrame();
+			SceneManager.UnloadSceneAsync(oldSceneName);
+		}
 	}
 
 //-----------------------------LEGACY FUNCTIONS-------------------------------

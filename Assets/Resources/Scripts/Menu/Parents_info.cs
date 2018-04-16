@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -28,4 +30,5 @@ public class Parents_info : MonoBehaviour {
 		PlayerPrefs.SetString ("Password", player_pass);
 		print("Password:" + PlayerPrefs.GetString ("Password"));
 	}
+
 }

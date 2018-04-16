@@ -10,12 +10,6 @@ public class PlayerColor : MonoBehaviour {
     // Use this for initialization
     void Start () {
         PlayerSprite = GetComponent<SpriteRenderer>();
-        print("Player prefs cabelo estilo: " + PlayerPrefs.GetInt("HairStyle"));
-        print("Player prefs cabelo cor: " + PlayerPrefs.GetInt("HairColor"));
-        print("Player prefs olhos cor: " + PlayerPrefs.GetInt("EyesColor"));
-        print("Player prefs corpo cor: " + PlayerPrefs.GetInt("BodyColor"));
-        print("Player prefs camisola cor: " + PlayerPrefs.GetInt("ShirtColor"));
-        print("Player prefs calças cor: " + PlayerPrefs.GetInt("PantsColor"));
         Hair1 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair1_spritesheet");
         Hair2 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair2_spritesheet");
         Hair3 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair3_spritesheet");

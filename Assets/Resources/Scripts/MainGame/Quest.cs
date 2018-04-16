@@ -11,7 +11,6 @@ public class Quest : MonoBehaviour {
 	public string questDescription;
 	public string questPeriod;
 	public string questObject;
-	public bool isCompleted;
 	private QuestManager theQM;
 	private PlayerController player;
 
@@ -44,6 +43,6 @@ public class Quest : MonoBehaviour {
     public void QuestCompleted()
 	{
 		player.isPaused = false;
-		isCompleted = true;
+
 	}
 }
