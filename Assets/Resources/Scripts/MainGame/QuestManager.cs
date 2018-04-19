@@ -15,31 +15,80 @@ public class QuestManager : MonoBehaviour {
 	private Text QuestBox;
 	public Button[] InactiveButtons;
 	public GameObject[] QuestMarkers;
+	public GameObject[] QuestItems;
 	public GameObject QuestWindow;
 	public PlayerController player;
-	public bool inMinigame;
+	public bool inMinigame,CurrentQuestCompleted;
 
 	// Use this for initialization
 	void Awake () {
 		inMinigame = false;
+		CurrentQuestCompleted = false;
 		QuestWindow.SetActive(false);
 		QuestBox = GameObject.Find ("Quest Box").GetComponentInChildren<Text>();
 		CreateListOfQuests ();
 		PlayerPrefs.SetInt ("inMinigame", 0);
+		InitializeQuestMarker ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (PlayerPrefs.GetInt("inMinigame") == 0) {
-			SetButtonCurrentQuest ();
-			print ("Quest Completed - " + PlayerPrefs.GetInt ("QuestCompleted"));
-	
+			//SetButtonCurrentQuest ();
+			CheckCurrentQuest ();
+		}
+		if (CurrentQuestCompleted) {
+			Quest currQuest = CheckCurrentQuest ();
+			currQuest.questCompleted = true;
+			SetQuestToNext (currQuest);
+			CurrentQuestCompleted = false;
 		}
 		//if(SceneManager.activeSceneChanged
 
 	}
 
-	
+	void InitializeQuestMarker (){
+		Quest FirstQuest = CheckCurrentQuest ();
+		FirstQuest.QuestMark.SetActive (true);
+	}
+
+	void SetQuestToNext(Quest QuestFinished){
+		if (QuestFinished.questNumber <= questsList.Length) {
+			int numberOfQuest = QuestFinished.questNumber;													//Os numeros das quests começam em 1 e o vector começa em 0 portanto a proxima quest é num da quest - 1
+			Quest NewQuest = questsList [numberOfQuest];
+			NewQuest.gameObject.SetActive (true);
+			print ("Quest Info - Num: " + NewQuest.questNumber + " Nome: " + NewQuest.questName);
+			HideQuestButtons (QuestFinished);
+			QuestFinished.gameObject.SetActive (false);
+			NewQuest.QuestMark.SetActive (true);
+
+		} else {
+			QuestFinished.gameObject.SetActive (false);
+			QuestBox.text = "Completaste todas as missões!";
+		}
+	}
+
+	void HideQuestButtons(Quest QuestObj){
+		
+		string QuestMark = QuestObj.questObject + "_quest";
+		string QuestB = QuestObj.questObject + "_Button";
+		foreach (GameObject go in QuestMarkers) {
+			if ((go.name == QuestMark))
+			{
+				print ("entrou questmarks");
+				go.SetActive (false);
+				break;
+			}
+		}
+
+		foreach (Button bo in InactiveButtons) {
+			if ((bo.name == QuestB))
+			{
+				bo.gameObject.SetActive (false);
+				break;
+			}
+		}
+	}
 
 	void CreateListOfQuests(){ 																				//função que lê o ficheiro com a lista de tarefas e transforma em quests (usando o prefab da quest)
 		PlayerPrefs.SetInt("QuestCompleted", 0);
@@ -75,14 +124,20 @@ public class QuestManager : MonoBehaviour {
 					quest.gameObject.SetActive (false);
 					questsList [counter] = quest;
 					foreach (Button bo in InactiveButtons) {
-						if (bo.name == (foo [3] + "_Button")) {                  
+						if (bo.name == (foo [3] + "_Button")) {
+							quest.QuestButton = bo.gameObject;
 							bo.onClick.AddListener (quest.QuestTextButton);
 						}
                         bo.gameObject.SetActive (false);
 					}
+
 					foreach (GameObject go in QuestMarkers) {
+						if (go.name == (foo [3] + "_quest")) {
+							quest.QuestMark = go;
+						}
 						go.SetActive (false);
 					}
+
 					morningcounter++;								
 				}
 
@@ -106,62 +161,15 @@ public class QuestManager : MonoBehaviour {
 
 	}
 
-	void SetButtonCurrentQuest(){
-		Quest Current = CheckCurrentQuest ();
-		int button_counter = 0, quest_counter = 0;
-		foreach (GameObject go in QuestMarkers) {
-			if ((go.name == Current.questObject + "_quest")) {
-				break;
-			}
-			quest_counter++;
-		}
-		foreach (Button bo in InactiveButtons) {
-			if ((bo.name == Current.questObject + "_Button")) {
-				break;
-			}
-			button_counter++;
-		}
-			
-		switch (Current.questObject) {																//Switch que verifica qual o objecto a que o jogador se deve deslocar e activa a tarefa.
-			case "Fridge":
-				GameObject.Find ("Fridge").GetComponent<Activate_button> ().enabled = true;
-				break;
-			case "Kitchen table":
-				GameObject.Find ("Kitchen table").GetComponent<Activate_button> ().enabled = true;
-				break;
-			case "Shower":
-				GameObject.Find ("Shower").GetComponent<Activate_button> ().enabled = true;
-				break;
-			case "Bathroom Sink":
-				break;
-			case "Kid Bedside Table":
-				break;
-			case "Desk with laptop":
-				break;
-		}
-		if (InactiveButtons [button_counter].gameObject.activeSelf || (!InactiveButtons [button_counter].gameObject.activeSelf && QuestWindow.activeSelf)) {
-			QuestMarkers [quest_counter].SetActive (false);
-		} 
-		if(!InactiveButtons [button_counter].gameObject.activeSelf && !QuestWindow.activeSelf){
-			QuestMarkers [quest_counter].SetActive (true);
-		}
-		
-	
-	}
-
-	Quest CheckCurrentQuest()																			//Função que diz qual é a quest atual (quest a ser apresentada na GUI)
+	public Quest CheckCurrentQuest()																			//Função que diz qual é a quest atual (quest a ser apresentada na GUI)
 	{																									//Experimentar ver primeira quest da lista de quests que tenha isCompleted=false
 		int quest_length = questsList.Length;
-		int cycle_counter = 0;
 
-		while(cycle_counter<quest_length)
-		{
-			if (PlayerPrefs.GetInt("QuestCompleted") == 0) {												//Verifica a primeira quest que não foi completada. Ativa essa quest, apresenta na GUI e sai do ciclo
-				Quest CurrentQuest = questsList [cycle_counter];
-				questsList [cycle_counter].gameObject.SetActive (true);
-				QuestBox.text = "Próxima Missão:\n" + questsList[cycle_counter].questName;
-
-				return CurrentQuest;
+		foreach(Quest qo in questsList){
+			if (!qo.questCompleted) {												//Verifica a primeira quest que não foi completada. Ativa essa quest, apresenta na GUI e sai do ciclo
+				qo.gameObject.SetActive(true);
+				QuestBox.text = "Próxima Missão:\n" + qo.questName;
+				return qo;
 			}
 
 		}
@@ -201,7 +209,7 @@ public class QuestManager : MonoBehaviour {
 			PlayerPrefs.SetString ("MemoryGameSprites", SpritesToUse);
 			break;
 
-		case "Cenas":
+		case "Bathroom Sink":
 			
 			PlayerPrefs.SetString ("MemoryGameFolder", "Teeth");
 			PlayerPrefs.SetInt ("HasSpritesheet", 1);
@@ -211,8 +219,8 @@ public class QuestManager : MonoBehaviour {
 		QuestWindow.SetActive (false);
 		player.isPaused = false;
 		PlayerPrefs.SetInt ("inMinigame", 1);
-		//PlayerPrefs.SetInt ("QuestCompleted", 1);
-		//quest_started.QuestCompleted ();
+		CurrentQuestCompleted = true;
+
 		SceneManager.LoadScene ("Match_minigame",LoadSceneMode.Additive);
 
 
@@ -224,21 +232,6 @@ public class QuestManager : MonoBehaviour {
 		int random_value = listRandom [index];
 		listRandom.RemoveAt (index);
 		return random_value;
-	}
-
-	List<string> ReadTextfile(string File_name)
-	{
-		string path = "Assets/Resources/Lists/" + File_name + ".txt";
-
-		//Read the text directly from the txt file
-		StreamReader reader = new StreamReader(path,System.Text.Encoding.GetEncoding("iso-8859-1")); 
-		string line;
-		List<string> arrayoflines = new List<string> ();
-		while((line = reader.ReadLine ())!= null ) {
-			arrayoflines.Add (line);
-		}
-		reader.Close ();
-		return arrayoflines;
 	}
 
 	List<string> AlternativeReadFile(string File_name){
@@ -265,5 +258,77 @@ public class QuestManager : MonoBehaviour {
 			arrayoflines.Add (line);
 		}
 		return arrayoflines;
+	}
+
+//-----------------------Legacy Functions-------------------------------
+
+	List<string> ReadTextfile(string File_name)
+	{
+		string path = "Assets/Resources/Lists/" + File_name + ".txt";
+
+		//Read the text directly from the txt file
+		StreamReader reader = new StreamReader(path,System.Text.Encoding.GetEncoding("iso-8859-1")); 
+		string line;
+		List<string> arrayoflines = new List<string> ();
+		while((line = reader.ReadLine ())!= null ) {
+			arrayoflines.Add (line);
+		}
+		reader.Close ();
+		return arrayoflines;
+	}
+
+
+	void SetButtonCurrentQuest(){
+		Quest Current = CheckCurrentQuest ();
+		int button_counter = 0, quest_counter = 0;
+		foreach (GameObject go in QuestMarkers) {
+			if ((go.name == Current.questObject + "_quest")) {
+				break;
+			}
+			quest_counter++;
+		}
+		foreach (Button bo in InactiveButtons) {
+			if ((bo.name == Current.questObject + "_Button")) {
+				break;
+			}
+			button_counter++;
+		}
+		//GameObject.Find (Current.questObject).GetComponent<Activate_button> ().enabled = true;
+		//print("Current obj name: " + Current.questObject);
+
+		switch (Current.questObject) {																//Switch que verifica qual o objecto a que o jogador se deve deslocar e activa a tarefa.
+		case "Fridge":
+			GameObject.Find ("Fridge").GetComponent<Activate_button> ().enabled = true;
+			break;
+		case "Kitchen table":
+			GameObject.Find ("Kitchen table").GetComponent<Activate_button> ().enabled = true;
+			break;
+		case "Shower":
+			GameObject.Find ("Shower").GetComponent<Activate_button> ().enabled = true;
+			break;
+		case "Bathroom Sink":
+			print ("Entrou bathroom sink");
+
+			Activate_button test = GameObject.Find ("Bathroom Sink").GetComponent<Activate_button> ();
+			print (test.isActiveAndEnabled);
+			test.enabled = true;
+			break;
+		case "Kid Bedside Table":
+			GameObject.Find ("Kid Bedside Table").GetComponent<Activate_button> ().enabled = true;
+			break;
+		case "Desk with laptop":
+			GameObject.Find ("Desk with laptop").GetComponent<Activate_button> ().enabled = true;
+			break;
+		}
+		if (!questsList [quest_counter].questCompleted) {
+			if (InactiveButtons [button_counter].gameObject.activeSelf || (!InactiveButtons [button_counter].gameObject.activeSelf && QuestWindow.activeSelf)) {
+				QuestMarkers [quest_counter].SetActive (false);
+			} 
+			if (!InactiveButtons [button_counter].gameObject.activeSelf && !QuestWindow.activeSelf) {
+				QuestMarkers [quest_counter].SetActive (true);
+			}
+		}
+
+
 	}
 }

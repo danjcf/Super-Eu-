@@ -93,22 +93,22 @@ public class CardManager : MonoBehaviour {
 		BonusPoint.text = "+" + bonus;
 		FinalPoint.text = " " + FinalPoints;
 
-		int stars = 0;
+
 
 		if (FinalPoints >= 0 && FinalPoints <= 30) {
 			//Uma estrela
-			stars = 1;
+
 			GameObject.Find("Star1").SetActive(false);
 			GameObject.Find("Star2").SetActive(false);
 		}
 		if (FinalPoints >= 31 && FinalPoints <= 60) {
 			//Duas Estrelas
-			stars = 2;
+
 			GameObject.Find("Star2").SetActive(false);
 		}
 		if (61 < FinalPoints) {
 			//Tres estrelas
-			stars = 3;
+
 		} 
 
 	}
