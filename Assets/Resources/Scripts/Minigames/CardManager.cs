@@ -6,7 +6,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour {
-	
+
+
+	//public GameObject UICanvas;
+	//public GameObject Joystick;
+	//public PlayerController player;
 	public Sprite cardBack;
 	public Sprite cardFace;
 	public Card[] CardList;
@@ -21,6 +25,7 @@ public class CardManager : MonoBehaviour {
 	private Text timerText;
 	private bool isOnDelay;
 	private bool isFinished;
+
 	// Use this for initialization
 	void Awake () {
 		string folderN = PlayerPrefs.GetString ("MemoryGameFolder");
@@ -115,12 +120,14 @@ public class CardManager : MonoBehaviour {
 
 	public void ReturnMainGame()
 	{
+		//Initiate.Fade("MainGame", Color.black, 0.5f);
+
 
 		//QuestManager MainManager = GameObject.Find("Quest Box").GetComponent<QuestManager>();
-		PlayerPrefs.SetInt("inMinigame",0);
-		SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainGame"));
-		SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Match_minigame").buildIndex);
 
+		PlayerPrefs.SetInt("inMinigame",0);
+		//SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainGame"));
+		SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Match_minigame").buildIndex);
 		//StartCoroutine(ChangeScene("MainGame","Match_minigame"));
 	}
 

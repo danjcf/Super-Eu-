@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterManager : MonoBehaviour {
 
+	GameControl Controller;
+
+	public int PowerValue = 10;												//REVER DEPOIS
 	//current level
 	public int vLevel = 1;
+	//current Power Level
+	public int PowerXP = 0;
 	//current exp amount
 	public int vCurrExp = 0;
 	//exp amount needed for lvl 1
@@ -15,10 +21,45 @@ public class CharacterManager : MonoBehaviour {
 	//modifier that increases needed exp each level
 	public float vExpMod = 1.15f;
 
+	public Slider LvlSlider;
+	public Slider PwrSlider;
+	public Text LvlText;
+
+	void Awake(){
+		Controller = FindObjectOfType<GameControl> ();
+
+	}
+
+	void Start(){
+		LoadLevelData ();
+		LvlSlider.maxValue = vExpLeft;
+
+	}
+
+	void LoadLevelData(){
+		vLevel = Controller.Data.level;
+		vCurrExp = Controller.Data.experience;
+		PowerXP = Controller.Data.power_level;
+		LvlSlider.value = vCurrExp;
+		PwrSlider.value = PowerXP;
+	}
+
+	public void SaveLevelData(){
+		Controller.Data.level = vLevel;
+		Controller.Data.experience = vCurrExp;
+		Controller.Data.power_level = PowerXP;
+	}
+
 	//leveling methods
-	public void GainExp(int e)
+	public void GainExp(int e)																//ALTERAR DEPOIS
 	{
 		vCurrExp += e;
+		PowerXP += PowerValue;
+		LvlSlider.value = vCurrExp;
+		PwrSlider.value += PowerXP;														
+		print ("Level: " + vLevel);
+		print ("Current xP: " + vCurrExp);
+		print ("XP Left to next level: " + vExpLeft);
 		if(vCurrExp >= vExpLeft)
 		{
 			LvlUp();
@@ -27,7 +68,9 @@ public class CharacterManager : MonoBehaviour {
 	void LvlUp()
 	{
 		vCurrExp -= vExpLeft;
+		LvlSlider.value = 0;
 		vLevel++;
+		LvlText.text = vLevel.ToString();
 		float t = Mathf.Pow(vExpMod, vLevel);
 		vExpLeft = (int)Mathf.Floor(vExpBase * t);
 	}

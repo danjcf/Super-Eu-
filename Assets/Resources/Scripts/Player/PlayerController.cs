@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
 	public float moveSpeed;
-
+	GameControl Controller;
 	private Animator anim;
 	private Rigidbody2D myRigidbody;
 	public bool isPaused;
@@ -17,38 +17,39 @@ public class PlayerController : MonoBehaviour
 	SpriteRenderer PlayerSprite;
 	SwapColor ColorSwapper;
 
+	void Awake()
+	{
+		Controller = FindObjectOfType<GameControl> ();
+		ColorSwapper = GetComponent<SwapColor>();
+	}
     // Use this for initialization
     void Start()
 	{
+		
 		isPaused = false;
 		anim = GetComponent<Animator>();
 		myRigidbody = GetComponent<Rigidbody2D>();
 		PlayerSprite = GetComponent<SpriteRenderer>();
-		print("Player prefs cabelo estilo: " + PlayerPrefs.GetInt("HairStyle"));
-		print("Player prefs cabelo cor: " + PlayerPrefs.GetInt("HairColor"));
-		print("Player prefs olhos cor: " + PlayerPrefs.GetInt("EyesColor"));
-		print("Player prefs corpo cor: " + PlayerPrefs.GetInt("BodyColor"));
-		print("Player prefs camisola cor: " + PlayerPrefs.GetInt("ShirtColor"));
-		print("Player prefs calças cor: " + PlayerPrefs.GetInt("PantsColor"));
-		switch (PlayerPrefs.GetString ("Sexo")) 													
+		LoadPlayerData ();
+		switch (Controller.Data.sex) 													
 		{
-		case "M":
+		case 'M':
 			anim.SetBool ("isMale", true);
-			print ("entrou gajo");
+
 			Hair1 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair1_spritesheet");
 			Hair2 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair2_spritesheet");
 			Hair3 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair3_spritesheet");
 			break;
-		case "F":
+		case 'F':
 			anim.SetBool ("isMale", false);
-			print("entrou gaja");
+		
 			Hair1 = Resources.Load<Sprite>("Sprites/Characters/Girl/Sprites/Girl_template");
 			break;
 		}
 
 
-		anim.SetInteger ("HairStyle",PlayerPrefs.GetInt("HairStyle"));
-		switch (PlayerPrefs.GetInt("HairStyle"))
+		anim.SetInteger ("HairStyle", Controller.Data.Hairstyle);
+		switch (Controller.Data.Hairstyle)
 		{
 		case 1:
 			PlayerSprite.sprite = Hair1;
@@ -60,14 +61,25 @@ public class PlayerController : MonoBehaviour
 			PlayerSprite.sprite = Hair3;
 			break;
 		}
-		SwapColor ColorSwapper = GetComponent<SwapColor>();
-		ColorSwapper.SwapHairColor(PlayerPrefs.GetInt("HairColor"));
-		ColorSwapper.SwapEyesColor(PlayerPrefs.GetInt("EyesColor"));
-		ColorSwapper.SwapBodyColor(PlayerPrefs.GetInt("BodyColor"));
-		ColorSwapper.SwapShirtColor(PlayerPrefs.GetInt("ShirtColor"));
-		ColorSwapper.SwapPantsColor(PlayerPrefs.GetInt("PantsColor"));
-		ColorSwapper.SwapShoesColor(PlayerPrefs.GetInt("ShoesColor"));
+
+
+		ColorSwapper.SwapHairColor(Controller.Data.Hair);
+		ColorSwapper.SwapEyesColor(Controller.Data.Eyes);
+		ColorSwapper.SwapBodyColor(Controller.Data.Skin);
+		ColorSwapper.SwapShirtColor(Controller.Data.Shirt);
+		ColorSwapper.SwapPantsColor(Controller.Data.Pants);
+		ColorSwapper.SwapShoesColor(Controller.Data.Shoes);
     }
+
+	void LoadPlayerData(){
+		gameObject.transform.position = Controller.Data.playerPos;
+		gameObject.transform.rotation = Controller.Data.playerRotation;
+	}
+
+	public void SavePlayerData(){
+		Controller.Data.playerPos = gameObject.transform.position;
+		Controller.Data.playerRotation = gameObject.transform.rotation;
+	}
 
 	// Update is called once per frame
 	void Update()

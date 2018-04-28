@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Change_hair_style : MonoBehaviour {
 
+	GameControl Controller;
     Sprite sprite_hair1, sprite_hair2, sprite_hair3, sprite_hair4;
     public SpriteRenderer Player;
     int currentHair;
     // Use this for initialization
     void Awake () {
-        
+		Controller = FindObjectOfType<GameControl> ();
         currentHair = 1;
         sprite_hair1 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair1_spritesheet");
         sprite_hair2 = Resources.Load<Sprite>("Sprites/Characters/Boy/Boy_hair2_spritesheet");
@@ -49,21 +50,27 @@ public class Change_hair_style : MonoBehaviour {
 
     void Change_hair(int counter)
     {
-		if (PlayerPrefs.GetString ("Sexo") == "M") {
+		if (Controller.Data.sex == 'M') {
 			switch (counter) {
 			case 1:
 				Player.sprite = sprite_hair1;
-				PlayerPrefs.SetInt ("HairStyle", 1);
+				//PlayerPrefs.SetInt ("HairStyle", 1);
+				Controller.Data.Hairstyle = 1;
 				break;
 			case 2:
 				Player.sprite = sprite_hair2;
-				PlayerPrefs.SetInt ("HairStyle", 2);
+				Controller.Data.Hairstyle = 2;
+				//PlayerPrefs.SetInt ("HairStyle", 2);
 				break;
 			case 3:
-				PlayerPrefs.SetInt ("HairStyle", 3);
+				//PlayerPrefs.SetInt ("HairStyle", 3);
+				Controller.Data.Hairstyle = 3;
 				Player.sprite = sprite_hair3;
 				break;
-
+			default:
+				Player.sprite = sprite_hair1;
+				Controller.Data.Hairstyle = 1;
+				break;
 			}
 		}
     }

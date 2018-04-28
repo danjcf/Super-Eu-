@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwapColor : MonoBehaviour {
 
+	GameControl Controller;
     Texture2D mColorSwapTex;
     Color[] mSpriteColors;
     int HairCounter,EyeCounter,BodyCounter,ShoesCounter,PantsCounter,ShirtCounter;
@@ -11,7 +12,8 @@ public class SwapColor : MonoBehaviour {
 
     void Awake()
     {
-        mSpriteRenderer = GetComponent<SpriteRenderer>();
+		Controller = FindObjectOfType<GameControl> ();
+		mSpriteRenderer = GetComponent<SpriteRenderer>();
         InitColorSwapTex();
         HairCounter = 0; EyeCounter = 0; BodyCounter = 0; ShoesCounter = 0; PantsCounter = 0; ShirtCounter = 0;
 
@@ -170,8 +172,9 @@ public class SwapColor : MonoBehaviour {
                 break;
 
         }
-        PlayerPrefs.SetInt("HairColor", Counter);
-        
+       
+		Controller.Data.Hair = Counter;
+
         SwapColors(SwapIndex.Hair_main, ColorFromIntRGB(R_hair_original, G_hair_original, B_hair_original));
         SwapColors(SwapIndex.Hair_lighter, ColorFromIntRGB(R_hair_original + R_hair_light, G_hair_original + G_hair_light, B_hair_original + B_hair_light));
         SwapColors(SwapIndex.Hair_darker, ColorFromIntRGB(R_hair_original + R_hair_dark, G_hair_original + G_hair_dark, B_hair_original + B_hair_dark));
@@ -219,8 +222,10 @@ public class SwapColor : MonoBehaviour {
                 B_Eye_color = 54;
                 break;
         }
-        PlayerPrefs.SetInt("EyesColor", Counter);
-        SwapColors(SwapIndex.Eyes_main, ColorFromIntRGB(R_Eye_color, G_Eye_color, B_Eye_color));
+       
+		Controller.Data.Eyes = Counter;
+
+		SwapColors(SwapIndex.Eyes_main, ColorFromIntRGB(R_Eye_color, G_Eye_color, B_Eye_color));
         SwapColors(SwapIndex.Eyes_shadow, ColorFromIntRGB(R_Eye_color + R_Eye_shadow, G_Eye_color + G_Eye_shadow, B_Eye_color + B_Eye_shadow));
         mColorSwapTex.Apply();
     }
@@ -311,8 +316,9 @@ public class SwapColor : MonoBehaviour {
                 B_body_original = 60;
                 break;
         }
-        PlayerPrefs.SetInt("BodyColor", Counter);
         
+		Controller.Data.Skin = Counter;
+
         SwapColors(SwapIndex.Body_main, ColorFromIntRGB(R_body_original, G_body_original, B_body_original));
         SwapColors(SwapIndex.Body_outline, ColorFromIntRGB(R_body_original + R_body_outline, G_body_original + G_body_outline, B_body_original + B_body_outline));
         SwapColors(SwapIndex.Body_shadow, ColorFromIntRGB(R_body_original + R_body_shadow, G_body_original + G_body_shadow, B_body_original + B_body_shadow));
@@ -463,7 +469,9 @@ public class SwapColor : MonoBehaviour {
                 B_shoes_original = 213;
                 break;
         }
-        PlayerPrefs.SetInt("ShoesColor", Counter);
+        
+		Controller.Data.Shoes = Counter;
+
         SwapColors(SwapIndex.Shoes_main, ColorFromIntRGB(R_shoes_original, G_shoes_original, B_shoes_original));
         SwapColors(SwapIndex.Shoes_outline, ColorFromIntRGB(R_shoes_original + R_shoes_outline, G_shoes_original + G_shoes_outline, B_shoes_original + B_shoes_outline));
         SwapColors(SwapIndex.Shoes_shadow, ColorFromIntRGB(R_shoes_original + R_shoes_shadow, G_shoes_original + G_shoes_shadow, B_shoes_original + B_shoes_shadow));
@@ -616,7 +624,9 @@ public class SwapColor : MonoBehaviour {
                 B_pants_original = 213;
                 break;
         }
-        PlayerPrefs.SetInt("PantsColor", Counter);
+        
+		Controller.Data.Pants = Counter;
+
         SwapColors(SwapIndex.Pants_main, ColorFromIntRGB(R_pants_original, G_pants_original, B_pants_original));
         SwapColors(SwapIndex.Pants_outline, ColorFromIntRGB(R_pants_original + R_pants_outline, G_pants_original + G_pants_outline, B_pants_original + B_pants_outline));
         SwapColors(SwapIndex.Pants_shadow, ColorFromIntRGB(R_pants_original + R_pants_shadow, G_pants_original + G_pants_shadow, B_pants_original + B_pants_shadow));
@@ -767,7 +777,9 @@ public class SwapColor : MonoBehaviour {
                 break;
             
         }
-        PlayerPrefs.SetInt("ShirtColor", Counter);
+        
+		Controller.Data.Shirt = Counter;
+
         SwapColors(SwapIndex.Shirt_main, ColorFromIntRGB(R_shirt_original, G_shirt_original, B_shirt_original));
         SwapColors(SwapIndex.Shirt_outline, ColorFromIntRGB(R_shirt_original + R_shirt_outline, G_shirt_original + G_shirt_outline, B_shirt_original + B_shirt_outline));
         SwapColors(SwapIndex.Shirt_shadow, ColorFromIntRGB(R_shirt_original + R_shirt_shadow, G_shirt_original + G_shirt_shadow, B_shirt_original + B_shirt_shadow));

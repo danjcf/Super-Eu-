@@ -12,24 +12,28 @@ public class Quest : MonoBehaviour {
 	public string questPeriod;
 	public string questObject;
 	public bool questCompleted;
+	public int questXP;
 	public GameObject QuestMark;
 	public GameObject QuestButton;
-	private QuestManager theQM;
-	private PlayerController player;
+	public GameObject QuestStart;
+	//private QuestManager theQM;
+	public PlayerController player;
 
 	void Start(){
 		questCompleted = false;
 		player = GameObject.Find ("Player").GetComponent<PlayerController> ();
-		theQM = GameObject.Find ("Quest Box").GetComponent<QuestManager> ();
+		//theQM = GameObject.Find ("Quest Box").GetComponent<QuestManager> ();
 	}
 
+
+//----------------------------Legacy functions---------------------------------
 	public void QuestTextButton()
 	{
-		theQM.QuestWindow.SetActive (true);
+		QuestStart.SetActive (true);
 		player.isPaused = true;
 		QuestButton.gameObject.SetActive (false);												//Desativar botão para não aparecer no fundo
-        theQM.QuestWindow.transform.TransformPoint(new Vector3((2*Screen.width) / 3, Screen.height / 2, 0));
-        Text[] QuestTexts = theQM.QuestWindow.GetComponentsInChildren<Text>();
+		QuestStart.transform.TransformPoint(new Vector3((2*Screen.width) / 3, Screen.height / 2, 0));
+		Text[] QuestTexts = QuestStart.GetComponentsInChildren<Text>();
         foreach (Text to in QuestTexts)
         {
             if (to.name == "MissionText")

@@ -18,11 +18,11 @@ public class Position_check : MonoBehaviour {
 	void Update () {
 		if(player_pos.position.y > Y_coordinate)
         {
-            object_layer.sortingLayerName = "Objects back";
+            object_layer.sortingLayerName = "Objects front";
         }
         if(player_pos.position.y < Y_coordinate)
         {
-            object_layer.sortingLayerName = "Objects front";
+            object_layer.sortingLayerName = "Objects back";
         }
 	}
 }
