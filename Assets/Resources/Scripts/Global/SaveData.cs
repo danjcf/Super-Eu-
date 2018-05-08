@@ -31,6 +31,7 @@ public class SaveData {
 	public int level;
 	public int power_level;
 	public int experience;
+	public int XpLeft;
 	public bool[] PowersUnlocked = new bool[3];
 
 		//Player last position
@@ -40,6 +41,7 @@ public class SaveData {
 	//Quests
 	//public List<Quest> TotalTasks;
 	public int CurrentTaskNumber;
+	public bool DayFinished;
 
 	//Statistics
 	public Quest[] TotalTasksCompleted;

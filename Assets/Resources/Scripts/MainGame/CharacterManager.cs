@@ -19,7 +19,7 @@ public class CharacterManager : MonoBehaviour {
 	//exp amount left to next levelup
 	public int vExpLeft = 50;
 	//modifier that increases needed exp each level
-	public float vExpMod = 1.15f;
+	public float vExpMod = 1.3f;
 
 	public Slider LvlSlider;
 	public Slider PwrSlider;
@@ -31,14 +31,17 @@ public class CharacterManager : MonoBehaviour {
 	}
 
 	void Start(){
-		LoadLevelData ();
+		if(PlayerPrefs.GetInt("FirstTime") == 0)
+			LoadLevelData ();
 		LvlSlider.maxValue = vExpLeft;
 
 	}
 
 	void LoadLevelData(){
 		vLevel = Controller.Data.level;
+		LvlText.text = vLevel.ToString ();
 		vCurrExp = Controller.Data.experience;
+		vExpLeft = Controller.Data.XpLeft;
 		PowerXP = Controller.Data.power_level;
 		LvlSlider.value = vCurrExp;
 		PwrSlider.value = PowerXP;
@@ -48,6 +51,7 @@ public class CharacterManager : MonoBehaviour {
 		Controller.Data.level = vLevel;
 		Controller.Data.experience = vCurrExp;
 		Controller.Data.power_level = PowerXP;
+		Controller.Data.XpLeft = vExpLeft;
 	}
 
 	//leveling methods
@@ -56,13 +60,15 @@ public class CharacterManager : MonoBehaviour {
 		vCurrExp += e;
 		PowerXP += PowerValue;
 		LvlSlider.value = vCurrExp;
-		PwrSlider.value += PowerXP;														
+		PwrSlider.value += 10;														
 		print ("Level: " + vLevel);
 		print ("Current xP: " + vCurrExp);
 		print ("XP Left to next level: " + vExpLeft);
 		if(vCurrExp >= vExpLeft)
 		{
+			int nextlvlxp = vCurrExp - vExpLeft; 
 			LvlUp();
+			LvlSlider.value = nextlvlxp;
 		}
 	}
 	void LvlUp()
@@ -73,6 +79,7 @@ public class CharacterManager : MonoBehaviour {
 		LvlText.text = vLevel.ToString();
 		float t = Mathf.Pow(vExpMod, vLevel);
 		vExpLeft = (int)Mathf.Floor(vExpBase * t);
+		LvlSlider.maxValue = vExpLeft;
 	}
 
 }

@@ -43,7 +43,7 @@ public class GameControl : MonoBehaviour {
 			string allText = File.ReadAllText (filepath);
 
 			data = JsonUtility.FromJson<SaveData> (allText);
-
+			print ("Loading Progress...");
 			DataLoaded = true;
 		} else {
 			Debug.Log ("Não existe nenhuma gravação!!!");
@@ -72,6 +72,7 @@ public class GameControl : MonoBehaviour {
 			File.WriteAllText (filepath, json);
 
 		}
+		print ("Saving Progress...");
 		return true;
 	}
 

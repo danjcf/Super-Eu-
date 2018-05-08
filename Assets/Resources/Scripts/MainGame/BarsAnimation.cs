@@ -10,13 +10,16 @@ public class BarsAnimation : MonoBehaviour {
 	public Slider lvl;
 	public Slider pwr;
 	public Text lvltext, XPText, PwrText;
-	public int PowerValue;
-	private float minimumlvl;
-	private float maximumlvl;
+	public int PowerLvl;
+	public float minimumlvl;
+	public float maximumlvl;
 	private float minPwr;
 	private float maxPwr;
 	public float duration;
 	private float startTime;
+	private float t;
+	public float xpleft;
+	public float Maxslider;
 
 	void Awake(){
 		QuestM = FindObjectOfType<QuestManager> ();
@@ -27,17 +30,49 @@ public class BarsAnimation : MonoBehaviour {
 		duration = 2f;
 		minimumlvl = LvlManager.vCurrExp;
 		maximumlvl = LvlManager.vCurrExp + QuestM.CurrentQuest.questXP;
+		Maxslider = lvl.maxValue;
+		if (maximumlvl >= Maxslider) {
+			xpleft = maximumlvl - Maxslider;
+		}
 		LvlManager.GainExp (QuestM.CurrentQuest.questXP);
 		minPwr = LvlManager.PowerXP;
-		maxPwr = LvlManager.PowerXP + PowerValue;
+		maxPwr = minPwr + PowerLvl;
 		lvltext.text = "Nível " + LvlManager.vLevel + ":";
 		XPText.text = "+" + QuestM.CurrentQuest.questXP;
-		PwrText.text = "+" + PowerValue;													//VALOR TEMPORÁRIO
+		PwrText.text = "+" + PowerLvl;													//VALOR TEMPORÁRIO
 	}
 
 	void Update(){
-		float t = (Time.time - startTime) / duration;
-		lvl.value = Mathf.SmoothStep(minimumlvl,maximumlvl,t);
+		t = (Time.time - startTime) / duration;
+		/*																					Loop Infinito
+		while (lvl.value != LvlManager.vCurrExp) {
+			if (maximumlvl >= lvl.maxValue) {
+				while (lvl.value != lvl.maxValue)
+					lvl.value = Mathf.SmoothStep (minimumlvl, lvl.maxValue, t);
+				minimumlvl = 0;
+				lvl.value = Mathf.SmoothStep (minimumlvl, maximumlvl - lvl.maxValue, t);
+			} else {
+				lvl.value = Mathf.SmoothStep(minimumlvl,maximumlvl,t);
+			}
+		}
+		*/
+		if (maximumlvl >= Maxslider) {
+			StartCoroutine (LevelUp ());
+		} else {
+			lvl.value = Mathf.SmoothStep(minimumlvl,maximumlvl,t);
+		}
 		pwr.value = Mathf.SmoothStep(minPwr,maxPwr,t);
+	}
+
+	IEnumerator LevelUp(){
+		lvltext.text = "Nível " + (LvlManager.vLevel-1) + ":";
+		lvl.value = Mathf.SmoothStep(minimumlvl,lvl.maxValue,t);
+		yield return new WaitUntil (() => lvl.value == lvl.maxValue);
+		maximumlvl = xpleft;
+		minimumlvl = 0;
+		lvl.maxValue = LvlManager.vExpLeft;
+		lvl.value = Mathf.SmoothStep(minimumlvl, xpleft,t);
+		lvltext.text = "Nível " + LvlManager.vLevel + ":";
+		yield return new WaitUntil (() => lvl.value == xpleft);
 	}
 }

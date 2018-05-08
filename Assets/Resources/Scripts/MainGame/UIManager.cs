@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    public GameObject Window;
+    public GameObject WindowCanvas;
 
 	public void Activate_window()
     {
-        if (!Window.activeSelf)
+        if (!WindowCanvas.activeSelf)
         {
-            Window.SetActive(true);
+            WindowCanvas.SetActive(true);
             Time.timeScale = 0.0f;
             
         }
@@ -18,9 +18,9 @@ public class UIManager : MonoBehaviour {
 
     public void Deactivate_window()
     {
-        if (Window.activeSelf)
+        if (WindowCanvas.activeSelf)
         {
-            Window.SetActive(false);
+            WindowCanvas.SetActive(false);
             Time.timeScale = 1.0f;
         }
     }

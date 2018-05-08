@@ -20,6 +20,7 @@ public class QuestManager : MonoBehaviour {
     public bool[] questCompleted;
 	public Quest[] questsList;
 	private Text QuestBox;
+	private Button QBoxButton;
 	public Button[] InactiveButtons;
 	public GameObject[] QuestMarkers;
 	public GameObject[] QuestItems;
@@ -38,12 +39,15 @@ public class QuestManager : MonoBehaviour {
 		CurrentQuestCompleted = false;
 		QuestWindow.SetActive(false);
 		QuestBox = GameObject.Find ("Quest Box").GetComponentInChildren<Text>();
+		QBoxButton = QuestBox.gameObject.GetComponentInParent<Button> ();
 		CreateListOfQuests ();
 		if(PlayerPrefs.GetInt("FirstTime") == 0){
 			LoadQuestData ();
 		}
+		if (PlayerPrefs.GetInt ("DayCompleted") == 0) {
+			InitializeQuestMarker ();
+		}
 		PlayerPrefs.SetInt ("inMinigame", 0);
-		InitializeQuestMarker ();
 	}
 
 
@@ -66,17 +70,37 @@ public class QuestManager : MonoBehaviour {
 
 	void LoadQuestData(){
 		print ("Current task number - " + Controller.Data.CurrentTaskNumber);
-		foreach (Quest qo in questsList) {
-			if (qo.questNumber < Controller.Data.CurrentTaskNumber) {
-				qo.questCompleted = true;
-			} else {
-				break;
+		if (!Controller.Data.DayFinished) {
+			PlayerPrefs.SetInt ("DayCompleted", 0);
+			foreach (Quest qo in questsList) {
+				if (qo.questNumber < Controller.Data.CurrentTaskNumber) {
+					qo.questCompleted = true;
+				} else {
+					break;
+				}
 			}
+		} else {
+			foreach (Quest qo in questsList) {
+				if (qo.questNumber != questsList.Length) {
+					qo.questCompleted = true;
+				}
+				if (qo.questNumber == questsList.Length) {
+					CurrentQuest = qo;
+				}
+			}
+			CurrentQuest.questCompleted = true;
+			SetQuestToNext (CurrentQuest);
 		}
 	}
 
 	public void SaveQuestData(){
-		Controller.Data.CurrentTaskNumber = CheckCurrentQuest().questNumber;
+		if (PlayerPrefs.GetInt ("DayCompleted") != 1) {
+			Controller.Data.CurrentTaskNumber = CheckCurrentQuest ().questNumber;
+			Controller.Data.DayFinished = false;
+		} else {
+			Controller.Data.CurrentTaskNumber = questsList.Length + 1;
+			Controller.Data.DayFinished = true;
+		}
 	}
 
 	void InitializeQuestMarker (){
@@ -85,7 +109,7 @@ public class QuestManager : MonoBehaviour {
 	}
 
 	public void SetQuestToNext(Quest QuestFinished){
-		if (QuestFinished.questNumber <= questsList.Length) {
+		if (QuestFinished.questNumber < questsList.Length) {
 			int numberOfQuest = QuestFinished.questNumber;													//Os numeros das quests começam em 1 e o vector começa em 0 portanto a proxima quest é num da quest - 1
 			Quest NewQuest = questsList [numberOfQuest];
 			NewQuest.gameObject.SetActive (true);
@@ -95,6 +119,10 @@ public class QuestManager : MonoBehaviour {
 			NewQuest.QuestMark.SetActive (true);
 			CheckCurrentQuest ();
 		} else {
+			HideQuestButtons (QuestFinished);
+			Button QBox = QuestBox.gameObject.GetComponentInParent<Button> ();
+			QBox.enabled = false;
+			PlayerPrefs.SetInt ("DayCompleted", 1);
 			QuestFinished.gameObject.SetActive (false);
 			QuestBox.text = "Completaste todas as missões!";
 		}
@@ -124,7 +152,6 @@ public class QuestManager : MonoBehaviour {
 	void CreateListOfQuests(){ 																				//função que lê o ficheiro com a lista de tarefas e transforma em quests (usando o prefab da quest)
 		
 		List<string> quests_name = AlternativeReadFile("Lista de Tarefas");									//Formato do ficheiro txt: Nome da quest - Descrição da quest - Duração da quest - Objecto onde vai estar a quest
-
 																											//Index da palavra Manhã no txt, que representa a divisão das tarefas da manhã
 		int lastIndex = quests_name.Count;
 		string[] tasks = new string[lastIndex];
@@ -195,6 +222,7 @@ public class QuestManager : MonoBehaviour {
 				qo.gameObject.SetActive(true);
 				QuestBox.text = "Próxima Missão:\n" + qo.questName;
 				CurrentQuest = qo;
+				PlayerPrefs.SetInt ("DayCompleted", 0);
 				return qo;
 			}
 
@@ -302,8 +330,15 @@ public class QuestManager : MonoBehaviour {
 		//Initiate.Fade("Match_minigame", Color.black, 0.5f);
 
 		SceneManager.LoadScene ("Match_minigame",LoadSceneMode.Additive);
+	}
 
-
+	Quest FindQuestwithIndex (int questListsIndex){
+		foreach (Quest qo in questsList) {
+			if (qo.questNumber - 1 == questListsIndex) {
+				return qo;
+			} 
+		}
+		return null;
 	}
 
 	public void ShowCurrentQuest(){
@@ -331,9 +366,11 @@ public class QuestManager : MonoBehaviour {
 	}
 
 	public void ShowStartQuest(){
+		QBoxButton.interactable = false;
 		Quest quest = CheckCurrentQuest ();
 		player.isPaused = true;
 		QuestShow.SetActive (true);
+		Joystick.SetActive (false);
 		QuestShow.transform.TransformPoint(new Vector3((2*Screen.width) / 3, Screen.height / 2, 0));
 		Text[] QuestTexts = QuestShow.GetComponentsInChildren<Text>();
 		foreach (Text to in QuestTexts)
@@ -347,6 +384,13 @@ public class QuestManager : MonoBehaviour {
 				to.text = quest.questDescription;
 			}
 		}
+	}
+
+	public void CloseStartQuest(){
+		QBoxButton.interactable = true;
+		player.isPaused = false;
+		QuestShow.SetActive (false);
+		Joystick.SetActive (true);
 	}
 
 
