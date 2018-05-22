@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Canvas
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - 
   - Triggers
   - Player
-  - 
-  - 
+  - Particles
+  - Background
   - 
   - 
   - 
