@@ -13,6 +13,7 @@ public class Quest : MonoBehaviour {
 	public string questObject;
 	public bool questCompleted;
 	public int questXP;
+	public int questTime;
 	public GameObject QuestMark;
 	public GameObject QuestButton;
 	public GameObject QuestStart;

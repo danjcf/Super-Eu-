@@ -172,7 +172,7 @@ public class SwapColor : MonoBehaviour {
                 break;
 
         }
-       
+
 		Controller.Data.Hair = Counter;
 
         SwapColors(SwapIndex.Hair_main, ColorFromIntRGB(R_hair_original, G_hair_original, B_hair_original));

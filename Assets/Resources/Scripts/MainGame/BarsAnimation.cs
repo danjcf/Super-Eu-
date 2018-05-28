@@ -20,8 +20,10 @@ public class BarsAnimation : MonoBehaviour {
 	private float t;
 	public float xpleft;
 	public float Maxslider;
+	public bool LvlGained;
 
 	void Awake(){
+		LvlGained = false;
 		QuestM = FindObjectOfType<QuestManager> ();
 		lvl.maxValue = LvlManager.vExpLeft;
 	}
@@ -34,9 +36,10 @@ public class BarsAnimation : MonoBehaviour {
 		if (maximumlvl >= Maxslider) {
 			xpleft = maximumlvl - Maxslider;
 		}
-		LvlManager.GainExp (QuestM.CurrentQuest.questXP);
+
 		minPwr = LvlManager.PowerXP;
 		maxPwr = minPwr + PowerLvl;
+		LvlManager.GainExp (QuestM.CurrentQuest.questXP);
 		lvltext.text = "Nível " + LvlManager.vLevel + ":";
 		XPText.text = "+" + QuestM.CurrentQuest.questXP;
 		PwrText.text = "+" + PowerLvl;													//VALOR TEMPORÁRIO
@@ -57,6 +60,7 @@ public class BarsAnimation : MonoBehaviour {
 		}
 		*/
 		if (maximumlvl >= Maxslider) {
+			LvlGained = true;
 			StartCoroutine (LevelUp ());
 		} else {
 			lvl.value = Mathf.SmoothStep(minimumlvl,maximumlvl,t);

@@ -1,14 +1,15 @@
-Levar a crianÁa ao parque
-Ir ao cinema 
-Ir comer um gelado
-Fazer um bolo 
-Ir jantar fora
-Jantar ‡ escolha da crianÁa
-Sobremesa ‡ escolha da crianÁa
-Noite de cinema com filme escolhido pela crianÁa
-Ficar acordado mais 30 minutos do que o normal no fim de semana
-Festa do pijama com 2 amigos
-Duas horas sozinho com o pai a fazer uma atividade do seu agrado
-Duas horas sozinho com a m„e a fazer uma atividade do seu agrado
-Ir tomar o pequeno-almoÁo fora
-Dia todo de pijama 
+ÔªøIr ao parque;Escolhe esta recompensa para os teus pais irem contigo dar um passeio a um parque!
+Ir ao cinema;Com esta recompensa, podes ir ao cinema ver um filme √† tua escolha!
+Ir comer um gelado;Escolhe esta recompensa para os teus pais te oferecerem um gelado
+Ajudar a fazer um bolo;Se escolheres esta recompensa podes ajudar os teus pais a fazer um bolo delicioso!
+Ir jantar jora;Com esta recompensa, podes ir jantar fora com os teus pais
+Escolher o que √© o jantar;Escolhe esta recompensa, para poderes escolher o que vai ser o jantar esta noite!
+Sobremesa √† minha escolha;Podes escolher a sobremesa que quiseres para comer hoje!
+Noite de cinema em casa com filme √† minha escolha;Se escolheres esta recompensa, podes ver com os teus pais o filme que quiseres na noite de cinema em casa! 
+Ficar acordado mais 30 minutos do que o normal no fim de semana;Escolhe esta recompensa para ficares acordado mais 30 minutos do que o normal neste fim de semana!
+Festa do pijama com 2 amigos;Se escolheres esta recompensa, podes convidar 2 amigos teus para fazerem uma festa do pijama contigo!
+Duas horas sozinho com o pai a fazer uma atividade que eu queira;Escolhe esta recompensa, para teres duas horas do dia do teu pai s√≥ para ti e para fazerem o que quiserem!
+Duas horas sozinho com a m√£e a fazer uma atividade que eu queira;Escolhe esta recompensa, para teres duas horas do dia da tua m√£e s√≥ para ti e para fazerem o que quiserem!
+Ir tomar o pequeno-almo√ßo fora;Se escolheres esta recompensa, podes ir tomar o pequeno-almo√ßo fora com os teus pais!
+Dia todo de pijama;Escolhe esta recompensa para os teus pais te deixarem passar o pr√≥ximo dia todo de pijama!
+Convidar um amigo para brincar;Se escolheres esta recompensa, os teus pais deixam-te convidar um amigo para vir brincar contigo! 

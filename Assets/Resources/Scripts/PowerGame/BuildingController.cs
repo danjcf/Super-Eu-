@@ -6,82 +6,149 @@ public class BuildingController : MonoBehaviour {
 
 	public float scrollSpeed;
 	public GameObject[] SecBuildings;
-	private bool HouseCreated;
-	GameObject currentChild;
+
 	public Transform BuildingSpawnPoint;
 	float ChosenBuildingYPos;
 	public float BuildingFrequency;
 	private Vector3 posf;
 	private Vector2 p, pos;
 	private bool BuildingsDone;
-	public Transform SB;
 	public GameController GC;
-	private GameObject SE;
-	public List<GameObject> ActiveSecBuildings;
-	public List<GameObject> InactiveSecBuildings;
+	public int ObjectCounter;
 
-	public List<GameObject> ActiveMainBuildings;
-	public List<GameObject> InactiveMainBuildings;
+	//New Try
+	public int Tier2Level;
+	public int Tier3Level;
+
+	public List<GameObject> ActiveBuilding;
+	public List<GameObject> Tier1Building;
+	public List<GameObject> Tier2Building;
+	public List<GameObject> Tier3Building;
+	public int BuildingCounter;
+	private List<GameObject> RemoveNext;
+	private bool NextIterationRemove;
 
 	// Use this for initialization
 	void Start () {
-		SE = null;
-		currentChild = null;
-		HouseCreated = false;
-		ActiveSecBuildings = new List<GameObject> ();
-		InactiveSecBuildings = new List<GameObject> ();
+		NextIterationRemove = false;
+		BuildingCounter = 1;
+		RemoveNext = new List<GameObject> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (!GC.isPaused) {
-			//Scrolling
-			//VER OS GAMEOBJECTS ACTIVOS - ESTES SÃO OS EM CENA | OS QUE TÃO FORA DE CENA SÃO OS DISPONIVEIS PARA COLOCAR NO SPAWN
-			Transform[] Tbuildings;
 
-			//SecBuildings contêm todos os objectos no jogo até agora
-			foreach (GameObject go in SecBuildings) {
-				Tbuildings = gameObject.GetComponentsInChildren<Transform> ();
+	void Update(){
+		if (!GC.isPaused && !GC.GameInMenu) {
+			
+			foreach (GameObject go in ActiveBuilding.ToArray()) {
 				ScrollBuilding (go);
 				if (go.transform.position.x <= -22.5f) {
-					if (ActiveSecBuildings.Contains (go)) {
-						ActiveSecBuildings.Remove (go);
+					if (ActiveBuilding.Count <= 6) {
+						//Verifica qual o tier de edificios que tem de por através de um contador
+						if (BuildingCounter >= 1 && BuildingCounter < Tier2Level) {
+							GenerateBuilding (1);
+							BuildingCounter++;
+						}
+						if (BuildingCounter == Tier2Level) {
+							GenerateBuilding (2);
+							BuildingCounter++;
+						}
+						if (BuildingCounter > Tier2Level && BuildingCounter < Tier3Level) {
+							GenerateBuilding(1);
+							BuildingCounter++;
+						}
+						if (BuildingCounter == Tier3Level) {
+							GenerateBuilding(3);
+							BuildingCounter = 1;
+						}
 					}
-					if (!InactiveSecBuildings.Contains (go)) {
-						InactiveSecBuildings.Add (go);
-					}
-					if (Tbuildings.Length <= 6 && !GC.SpecialEvent) {
-						GenerateRandomBuilding ();
-					}
-					go.SetActive (false);
+					//booleana que remove o objecto na proxima iteração
+					NextIterationRemove = true;
+					RemoveNext.Add(go);
 				}
 			}
-			if (GC.SpecialEvent) {
-				if (!HouseCreated) {
-					//Gerar evento especial (casa a arder), por exemplo de 30 em 30 segundos - Para teste fazer 15 em 15 segundos
-					SE = GenerateSpecialHouse ();
+			if (NextIterationRemove) {
+				foreach (GameObject go in RemoveNext) {
+					RemoveBuilding (go);
 				}
-				if (!GC.EventStarted) {
-					if (SE != null) {
-						ScrollBuilding (SE);
-					}
-					if (SE.transform.position.x <= -22.5f) {
-						if (ActiveMainBuildings.Contains (SE)) {
-							ActiveMainBuildings.Remove (SE);
-						}
-						if (!InactiveMainBuildings.Contains (SE)) {
-							InactiveMainBuildings.Add (SE);
-						}
-						HouseCreated = false;
-						SE.SetActive (false);
-					}
-				}
-				if (GC.EventStarted) {
-					GC.isPaused = true;
-				}
+				RemoveNext.Clear ();
 			}
 		}
+	
 	}
+
+
+	void RemoveBuilding(GameObject BuildingToRemove){
+		if (ActiveBuilding.Contains (BuildingToRemove)) {
+			ActiveBuilding.Remove (BuildingToRemove);
+		}
+		if (!Tier1Building.Contains (BuildingToRemove) || !Tier2Building.Contains (BuildingToRemove) || !Tier3Building.Contains (BuildingToRemove)) {
+			switch (BuildingToRemove.name) {
+			case "PizzaHouse":
+				Tier2Building.Add (BuildingToRemove);
+				break;
+			case "Hospital":
+				Tier2Building.Add (BuildingToRemove);
+				break;
+			case "HouseFire":
+				Tier3Building.Add (BuildingToRemove);
+				break;
+			default:
+				Tier1Building.Add (BuildingToRemove);
+				break;
+			}
+		}
+		BuildingToRemove.SetActive (false);
+	}
+
+	void GenerateBuilding(int TierLevel){
+		int ChosenBuilding = 0;
+		GameObject ObjectToBuild = null;
+		switch (TierLevel) {
+		case 1:
+			ChosenBuilding = Random.Range (0, Tier1Building.Count);
+			ObjectToBuild = Tier1Building [ChosenBuilding];
+			break;
+		case 2:
+			ChosenBuilding = Random.Range (0, Tier2Building.Count);
+			ObjectToBuild = Tier2Building [ChosenBuilding];
+			break;
+		case 3:
+			ChosenBuilding = Random.Range (0, Tier3Building.Count);
+			ObjectToBuild = Tier3Building [ChosenBuilding];
+			break;
+		}
+		float LastX = 0;
+		float NewX = 0;
+		LastX = FindBuildingLastPos ();
+
+		SpriteRenderer SR = ObjectToBuild.GetComponent<SpriteRenderer> ();
+		if (SR != null) {
+			NewX = LastX + (SR.size.x / 2);
+		} else {
+			SpriteRenderer[] BuildingRenderChilds = ObjectToBuild.GetComponentsInChildren<SpriteRenderer> ();
+			float TotalSize = 0f;
+			foreach (SpriteRenderer SRO in BuildingRenderChilds) {
+				TotalSize += SRO.size.x;
+			}
+			NewX = LastX + (TotalSize / 2);
+		}
+		ObjectToBuild.transform.position = new Vector3 (NewX - 1f, ObjectToBuild.transform.position.y, 0);
+		switch (TierLevel) {
+		case 1:
+			Tier1Building.Remove (ObjectToBuild);
+			break;
+		case 2:
+			Tier2Building.Remove (ObjectToBuild);
+			break;
+		case 3:
+			Tier3Building.Remove (ObjectToBuild);
+			break;
+		}
+		if (!ActiveBuilding.Contains (ObjectToBuild)) {
+			ActiveBuilding.Add (ObjectToBuild);
+		}
+		ObjectToBuild.SetActive (true);
+	}
+
 
 	void ScrollBuilding( GameObject CurrentObstacle){
 		CurrentObstacle.transform.position -= Vector3.right * (scrollSpeed * Time.deltaTime);
@@ -102,67 +169,14 @@ public class BuildingController : MonoBehaviour {
 				buildcounter++;
 			}
 			SpriteRenderer BuildingRend = CurrentBuildingsPos [BiggestBuilding].gameObject.GetComponent<SpriteRenderer> ();
-			float LastX = BiggestPosX + (BuildingRend.size.x / 2);
+			float BuildingRendX = 0f;
+			if (BuildingRend != null) {
+				BuildingRendX = BuildingRend.size.x;
+			}
+			float LastX = BiggestPosX + (BuildingRendX / 2);
 			return LastX;
 		} else {
 			return 28f; //Posição do SpawnPoint
 		}
-	}
-
-
-
-	void GenerateRandomBuilding(){
-		//Escolhe um edificio aleatoriamente e ativa-o no spawn point
-		int ChosenBuilding = Random.Range (0, InactiveSecBuildings.Count);
-		GameObject building = null;
-		float NewX = 0;
-
-		building = InactiveSecBuildings [ChosenBuilding];
-		float LastX = FindBuildingLastPos ();
-
-		SpriteRenderer SR = building.GetComponent<SpriteRenderer> ();
-		if (SR != null) {
-			NewX = LastX + (SR.size.x / 2);
-		} else {
-			SpriteRenderer[] BuildingRenderChilds = building.GetComponentsInChildren<SpriteRenderer> ();
-			float TotalSize = 0f;
-			foreach (SpriteRenderer SRO in BuildingRenderChilds) {
-				TotalSize += SRO.size.x;
-			}
-			NewX = LastX + (TotalSize / 2);
-		}
-		building.transform.position = new Vector3 (NewX-1f, building.transform.position.y, 0); 
-
-		if (!ActiveSecBuildings.Contains (building)) {
-			ActiveSecBuildings.Add (building);
-		}
-		if (InactiveSecBuildings.Contains (building)) {
-			InactiveSecBuildings.Remove (building);
-		}
-		building.SetActive (true);
-
-	}
-
-	GameObject GenerateSpecialHouse(){
-		int ChosenOne = Random.Range (0, InactiveMainBuildings.Count);
-		GameObject MainB = InactiveMainBuildings [ChosenOne];
-		SpriteRenderer SR = MainB.GetComponent<SpriteRenderer> ();
-		float LastX = FindBuildingLastPos ();
-		float TotalX = 0f; 
-		if (SR != null) {
-			TotalX = LastX + SR.size.x;
-		}
-		MainB.transform.position = new Vector3 (TotalX, MainB.transform.position.y , 0);
-
-		if (!ActiveSecBuildings.Contains (MainB)) {
-			ActiveSecBuildings.Add (MainB);
-		}
-		if (InactiveMainBuildings.Contains (MainB)) {
-			InactiveMainBuildings.Remove (MainB);
-		}
-		MainB.SetActive (true);
-
-		HouseCreated = true;
-		return MainB;
 	}
 }

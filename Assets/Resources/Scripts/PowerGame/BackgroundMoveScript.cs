@@ -27,7 +27,7 @@ public class BackgroundMoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GC.isPaused) {
+		if (!GC.isPaused && !GC.GameInMenu) {
 			// Calculating new backgrounds position repeating it depending on scrollOffset
 			newPos = Mathf.Repeat (Time.time * -scrollSpeed, scrollOffset);
 

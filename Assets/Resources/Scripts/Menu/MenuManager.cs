@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
 	GameControl Controller;
-	int current_menu;
+	public int current_menu;
 	public GameObject [] Menus;
     public GameObject Character;
+	public GameObject Credits;
 	private string player_email, player_pass, player_pin;
 	public InputField Input_pass, Input_email;
 	public InputField Input_pin;
@@ -34,26 +35,51 @@ public class MenuManager : MonoBehaviour {
         Menu[current - 1].SetActive(true);
     }
 
+	public void OpenCredits(){
+		Menus [current_menu].SetActive (false);
+		Credits.SetActive (true);
+	}
+
+	public void CloseCredits(){
+		Menus [current_menu].SetActive (true);
+		Credits.SetActive (false);
+	}
+
     public void EnterGame()
     {
 		
 		if (Controller.Data.Hairstyle == 0)
 			Controller.Data.Hairstyle = 1;
 		//PlayerPrefs.SetInt ("HairStyle", 1);
+		Controller.SaveGame ();
 		SceneManager.LoadScene ("MainGame", LoadSceneMode.Single);
     }
 
 	public void EnterFirstTimeMenu(){
 		PlayerPrefs.SetInt ("FirstTime", 1);
-		Menus [14].SetActive (false);
+		Menus [13].SetActive (false);
 		Controller.CreateGame ();
 		Menus [1].SetActive (true);
 		current_menu = 1;
 	}
 
+	public void EnterInitialMenu(){
+		current_menu = 13;
+		Menus [14].SetActive (false);
+		Menus [13].SetActive (true);
+	}
+
 	public void EnterLogin(){
 		Menus [14].SetActive (false);
 		Menus [16].SetActive (true);
+		Controller.LoadGame ();
+
+		current_menu = 16;
+	}
+
+	public void EnterWithoutLogin(){
+		Menus [13].SetActive (false);
+		Menus [14].SetActive (true);
 		Controller.LoadGame ();
 
 		current_menu = 16;
@@ -101,7 +127,7 @@ public class MenuManager : MonoBehaviour {
 		
 		switch (current_menu) {
 		case 0:
-			current_menu = 14;
+			current_menu = 13;
 			Menus [0].SetActive (false);
 			Menus [current_menu].SetActive (true);
 			break;
@@ -133,25 +159,35 @@ public class MenuManager : MonoBehaviour {
 			Set_next_menu (Menus, 6);
 			break;
 		case 7:
+			//Para o Online
+			/*
 			if (Save_parent_email () && Save_parent_password ()) {
 				current_menu++;
 				Set_next_menu (Menus, 7);
-			}
+			}*/
+			current_menu++;
+			Set_next_menu (Menus, 7);
 			break;
+			/*
 		case 8:
 			current_menu++;
 			Set_next_menu (Menus, 8);
 			break;
-		case 10:
+			*/
+		case 9:
 			if (SaveParentPin()) {
-				Controller.SaveGame ();
-				Menus [10].SetActive (false);
-				current_menu = 12;
-				Menus [12].SetActive (true);
+				
+				Menus [9].SetActive (false);
+				current_menu = 11;
+				Menus [11].SetActive (true);
 			}
 			break;
+		case 10:
+			current_menu++;
+			Set_next_menu (Menus, 10);
+			break;
 		case 11:
-			Controller.SaveGame ();
+			
 			current_menu++;
 			Set_next_menu (Menus, 11);
 																												//Mandar mail com os dados da conta aqui
@@ -214,8 +250,13 @@ public class MenuManager : MonoBehaviour {
 				Set_previous_menu (Menus, 9);
 				break;
 			case 10:
+				Menus [current_menu].SetActive (false);
+				current_menu = 8;
+				Menus [current_menu].SetActive (true);
+				/*
 				current_menu--;
 				Set_previous_menu (Menus, 10);
+				*/
 				break;
 			case 11:
 				Menus [current_menu].SetActive (false);
@@ -228,14 +269,13 @@ public class MenuManager : MonoBehaviour {
 	public void MenuYes(){
 		
 		current_menu++;
-		Menus [9].SetActive (false);
+		Menus [8].SetActive (false);
 		Menus [current_menu].SetActive (true);
-		print ("Menu" + current_menu);
 	}
 
 	public void MenuNo(){
-		current_menu = 11;
-		Menus [9].SetActive (false);
+		current_menu = 10;
+		Menus [8].SetActive (false);
 		Menus [current_menu].SetActive (true);
 	}
 

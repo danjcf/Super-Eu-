@@ -27,8 +27,7 @@ public class ObstaclePooler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GC.isPaused) {
-			if (!GC.SpecialEvent) {
+		if (!GC.isPaused && !GC.GameInMenu) {
 				if (GroundCounter <= 0.0f) {
 					GenerateObstacle (1);
 				} else {
@@ -46,7 +45,6 @@ public class ObstaclePooler : MonoBehaviour {
 				} else {
 					CoinCounter -= Time.deltaTime * CoinFrequency;
 				}
-			}
 			for (int i = 0; i < transform.childCount; i++) {
 				currentChild = transform.GetChild (i).gameObject;
 				ScrollObstacle (currentChild);

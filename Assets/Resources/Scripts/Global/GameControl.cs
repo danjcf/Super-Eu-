@@ -59,7 +59,7 @@ public class GameControl : MonoBehaviour {
 		Data.SaveDate = DateTime.Now.ToString();
 		print (Data.SaveDate);
 		if (!File.Exists (filepath)) {
-			string json = JsonUtility.ToJson (data);
+			string json = JsonUtility.ToJson (data,true);
 			File.WriteAllText (filepath, json);
 		} else {
 			//REVER ISTO
@@ -68,7 +68,7 @@ public class GameControl : MonoBehaviour {
 				File.Delete (replacepath);
 			}
 			File.Copy (filepath, replacepath);
-			string json = JsonUtility.ToJson (data);
+			string json = JsonUtility.ToJson (data,true);
 			File.WriteAllText (filepath, json);
 
 		}
@@ -78,7 +78,7 @@ public class GameControl : MonoBehaviour {
 
 	public void CreateGame(){
 		data = new SaveData ();
-		SaveGame ();
+		//SaveGame ();
 	}
 
 	public void DeleteGame(){

@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
+using Random = UnityEngine.Random;
 
 public class QuestManager : MonoBehaviour {
 
 	public Quest prefab;
+	public Reward RewardPrefab;
 	public GameObject Match;
 	GameControl Controller;
+	public GameObject MenuButton;
 	public GameObject TaskStarted;
 	public Text MissionName;
 	public GameObject PinOption;
@@ -17,8 +21,11 @@ public class QuestManager : MonoBehaviour {
 	public GameObject Joystick;
 	public GameObject QuestShow;
 	public GameObject QuestShowBox;
+	public Text PeriodDay;
     public bool[] questCompleted;
 	public Quest[] questsList;
+	private Quest FirstQuestMorning, FirstQuestAfternoon, FirstQuestNight;
+	public Reward[] rewardsList;
 	private Text QuestBox;
 	private Button QBoxButton;
 	public Button[] InactiveButtons;
@@ -31,9 +38,20 @@ public class QuestManager : MonoBehaviour {
 	public Image FadeImage;
 	public Animator anim;
 	public Quest CurrentQuest,CurrentSavedQuest;
+	public GameObject QuestObjects;
+	public GameObject RewardObjects;
+	public List<Reward> RewardsToGive;
+	DateTime currentTime;
+	public GameObject FinalWindow;
+	public GameObject SleepingCanvas;
+	private bool FinalButton;
+	public bool SleepMode;
+	public MainGameManager GM;
 
 	// Use this for initialization
 	void Awake () {
+		SleepMode = false;
+		FinalButton = false;
 		inMinigame = false;
 		Controller = FindObjectOfType<GameControl> ();
 		CurrentQuestCompleted = false;
@@ -41,12 +59,14 @@ public class QuestManager : MonoBehaviour {
 		QuestBox = GameObject.Find ("Quest Box").GetComponentInChildren<Text>();
 		QBoxButton = QuestBox.gameObject.GetComponentInParent<Button> ();
 		CreateListOfQuests ();
-		if(PlayerPrefs.GetInt("FirstTime") == 0){
-			LoadQuestData ();
-		}
-		if (PlayerPrefs.GetInt ("DayCompleted") == 0) {
-			InitializeQuestMarker ();
-		}
+		CreateListOfRewards ();
+		LoadQuestData ();
+		FirstQuestMorning = GetQuestbyIndex (1);
+		FirstQuestAfternoon = GetQuestbyIndex (9);
+		FirstQuestNight = GetQuestbyIndex (17);
+		CheckCurrentQuest ();
+		CheckPeriodOfDay ();
+		InitializeQuestMarker ();
 		PlayerPrefs.SetInt ("inMinigame", 0);
 	}
 
@@ -57,15 +77,38 @@ public class QuestManager : MonoBehaviour {
 			//SetButtonCurrentQuest ();
 			CheckCurrentQuest ();
 		}
-		/*
-		if (CurrentQuestCompleted) {
-			Quest currQuest = CheckCurrentQuest ();
-			//currQuest.questCompleted = true;
-			SetQuestToNext (currQuest);
-			//LvlManager.GainExp (10);
-			CurrentQuestCompleted = false;
+		if ((PlayerPrefs.GetInt ("DayCompleted") == 1) && !CheckIfItsNewDay()) {
+			LvlManager.SetPowerMax ();
+			LvlManager.PeriodDone = true;
 		}
-		*/
+		if ((PlayerPrefs.GetInt ("DayCompleted") == 1) && CheckIfItsNewDay () && !FinalButton) {
+			FinalWindow.SetActive (true);
+			FinalButton = true;
+		}
+	}
+
+	bool CheckIfItsNewDay(){
+		DateTime NewTime = System.DateTime.Now;
+		if (NewTime.Hour >= 6 && NewTime.Hour < 24) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+	public void EnterSleepMode(){
+		ResetDay ();
+		SleepingCanvas.SetActive (true);
+		SleepMode = true;
+	}
+
+	void ResetDay()
+	{
+		ResetQuests ();
+		CheckCurrentQuest ();
+		PlayerPrefs.SetInt ("DayCompleted", 0);
+		Controller.Data.DayFinished = false;
 	}
 
 	void LoadQuestData(){
@@ -90,6 +133,17 @@ public class QuestManager : MonoBehaviour {
 			}
 			CurrentQuest.questCompleted = true;
 			SetQuestToNext (CurrentQuest);
+			SleepMode = Controller.Data.SleepMode;
+			if (SleepMode && System.DateTime.Now.Hour < 6) {
+				EnterSleepMode ();
+			}
+		}
+		foreach (string CR in Controller.Data.ChosenRewardNames) {
+			foreach (Reward Ro in rewardsList) {
+				if (Ro.RewardName == CR) {
+					RewardsToGive.Add (Ro);
+				}
+			}
 		}
 	}
 
@@ -101,11 +155,68 @@ public class QuestManager : MonoBehaviour {
 			Controller.Data.CurrentTaskNumber = questsList.Length + 1;
 			Controller.Data.DayFinished = true;
 		}
+		Controller.Data.SleepMode = SleepMode;
+		foreach (Reward Ro in RewardsToGive) {
+			Controller.Data.ChosenRewardNames.Add(Ro.RewardName);
+
+		}
+
+	}
+
+	void CheckPeriodOfDay(){
+		//verifica se a missão em que está bate certo com o período real do dia. (se for de manha, mete uma missao da manhã. se for tarde, mete uma missao da tarde, etc)
+		currentTime = System.DateTime.Now;
+		if ((currentTime.Hour > 6 && currentTime.Hour < 12) && CurrentQuest.questPeriod != "Manhã") {
+			SetQuestToThis (FirstQuestMorning);
+		}
+		if ((currentTime.Hour >= 12 && currentTime.Hour < 18) && CurrentQuest.questPeriod != "Tarde") {
+			SetQuestToThis (FirstQuestAfternoon);
+		}
+		if ((currentTime.Hour >= 18 || currentTime.Hour < 6) && CurrentQuest.questPeriod != "Noite") {
+			SetQuestToThis (FirstQuestNight);
+		}
 	}
 
 	void InitializeQuestMarker (){
 		Quest FirstQuest = CheckCurrentQuest ();
-		FirstQuest.QuestMark.SetActive (true);
+		if (FirstQuest != null) {
+			FirstQuest.QuestMark.SetActive (true);
+		}
+	}
+
+	void ResetQuests(){
+		foreach (Quest qo in questsList) {
+			qo.questCompleted = false;
+			qo.gameObject.SetActive (false);
+		}
+	}
+
+	Quest SetQuestToThis(Quest ChosenQuest){
+		ResetQuests ();
+		int PreviousQuestNumber = 0;
+		foreach (Quest qo in questsList) {
+			if (ChosenQuest == qo) {
+				if (ChosenQuest.questNumber == 1) {
+					CheckCurrentQuest ();
+				} else {
+					SetQuestToNext (GetQuestbyIndex(PreviousQuestNumber));
+				}
+				return qo;
+			} else {
+				PreviousQuestNumber = qo.questNumber;
+				qo.questCompleted = true;
+			}
+		}
+		return null;
+	}
+
+	Quest GetQuestbyIndex(int QuestIndex){
+		foreach (Quest qo in questsList) {
+			if (qo.questNumber == QuestIndex) {
+				return qo;
+			}
+		}
+		return null;
 	}
 
 	public void SetQuestToNext(Quest QuestFinished){
@@ -123,6 +234,8 @@ public class QuestManager : MonoBehaviour {
 			Button QBox = QuestBox.gameObject.GetComponentInParent<Button> ();
 			QBox.enabled = false;
 			PlayerPrefs.SetInt ("DayCompleted", 1);
+			PeriodDay.text = "Noite";
+			LvlManager.SetPowerMax ();
 			QuestFinished.gameObject.SetActive (false);
 			QuestBox.text = "Completaste todas as missões!";
 		}
@@ -149,6 +262,45 @@ public class QuestManager : MonoBehaviour {
 		}
 	}
 
+	void CreateListOfRewards(){
+		List<string> rewards_name = AlternativeReadFile("Lista de Recompensas");
+
+		int RewardsLastIndex = rewards_name.Count;
+		string[] rewards = new string[RewardsLastIndex];
+		rewards_name.CopyTo (0, rewards, 0, RewardsLastIndex);
+
+		string[] foo = new string[2];
+		rewardsList = new Reward[rewards.Length];
+		int counter = 0;
+		while (counter < rewards.Length) {
+			Reward Reward = (Instantiate (RewardPrefab) as Reward);
+			Reward.transform.SetParent (RewardObjects.transform);
+			Reward.name = "Reward" + counter;
+			foo = rewards [counter].Split (';');
+			Reward.RewardName = foo [0];
+			Reward.RewardDescription = foo [1];
+			Reward.RewardChosen = false;
+			rewardsList [counter] = Reward;
+			counter++;
+		}
+	}
+
+	public List<Reward> SortRewards(){
+		int RewardToChoose = 0;
+		int rewardcounter = 0;
+		List<Reward> SortedRewards = new List<Reward> ();
+		while(rewardcounter < 3){
+			RewardToChoose = Random.Range (0, rewardsList.Length);
+			if (!rewardsList[RewardToChoose].RewardChosen && !SortedRewards.Contains(rewardsList[RewardToChoose]) && !RewardsToGive.Contains(rewardsList[RewardToChoose])) {
+				SortedRewards.Add (rewardsList[RewardToChoose]);
+				rewardcounter++;
+			}
+
+		}
+		return SortedRewards;
+	}
+		
+
 	void CreateListOfQuests(){ 																				//função que lê o ficheiro com a lista de tarefas e transforma em quests (usando o prefab da quest)
 		
 		List<string> quests_name = AlternativeReadFile("Lista de Tarefas");									//Formato do ficheiro txt: Nome da quest - Descrição da quest - Duração da quest - Objecto onde vai estar a quest
@@ -160,13 +312,13 @@ public class QuestManager : MonoBehaviour {
 		int morningcounter = 1;
 		int afternooncounter = 1;
 		int nightcounter = 1;
-		string[] foo = new string[4];
+		string[] foo = new string[5];
 		questsList = new Quest[tasks.Length];
 		char[] charsToTrim = {'\r'};
 		while(counter<tasks.Length)														//Ciclo para criar as quests, retira-se 1 ao tasks.length por causa da string "Tarde" a meio do ficheiro
 		{
 			Quest quest = (Instantiate (prefab) as Quest);												//Cria as várias quests
-			quest.transform.SetParent (GameObject.Find ("Quest Box").transform);						//Define as quests como children do questmanager
+			quest.transform.SetParent (QuestObjects.transform);						//Define as quests como children do questmanager
 			quest.questNumber = counter + 1;
 			foo = tasks [counter].Split (';');													//Divide o txt através dos tabs e separa com o formato dito em cima
 			foo[3] = foo [3].Trim (charsToTrim);
@@ -175,6 +327,7 @@ public class QuestManager : MonoBehaviour {
 			quest.questPeriod = foo [2];
 			quest.questObject = foo [3];
 			int.TryParse (foo [4], out quest.questXP);
+			int.TryParse (foo [5], out quest.questTime);
 			quest.player = player;
 			switch (quest.questPeriod) {
 			case "Manhã":
@@ -221,13 +374,26 @@ public class QuestManager : MonoBehaviour {
 			if (!qo.questCompleted) {												//Verifica a primeira quest que não foi completada. Ativa essa quest, apresenta na GUI e sai do ciclo
 				qo.gameObject.SetActive(true);
 				QuestBox.text = "Próxima Missão:\n" + qo.questName;
+				PeriodDay.text = qo.questPeriod.ToString ();
 				CurrentQuest = qo;
 				PlayerPrefs.SetInt ("DayCompleted", 0);
 				return qo;
 			}
 
 		}
+		//PeriodDay.text = "Noite";
+		//PlayerPrefs.SetInt ("DayCompleted", 1);
 		return null;
+	}
+
+
+	public void DeactivateUI(){
+		Joystick.SetActive (false);
+	}
+
+	public void ActivateUI(){
+		Joystick.SetActive (true);
+
 	}
 
 	public void StartButton()                                                       					//Iniciar o minijogo (Match 2 images)
@@ -332,6 +498,11 @@ public class QuestManager : MonoBehaviour {
 		SceneManager.LoadScene ("Match_minigame",LoadSceneMode.Additive);
 	}
 
+	public void EnterPowerGame(){
+		GM.SaveGame ();
+		SceneManager.LoadScene ("PowersGame",LoadSceneMode.Single);
+	}
+
 	Quest FindQuestwithIndex (int questListsIndex){
 		foreach (Quest qo in questsList) {
 			if (qo.questNumber - 1 == questListsIndex) {
@@ -345,6 +516,7 @@ public class QuestManager : MonoBehaviour {
 		Quest quest = CheckCurrentQuest ();
 		player.isPaused = true;
 		QuestShowBox.SetActive (true);
+		DeactivateUI ();
 		QuestShowBox.transform.TransformPoint(new Vector3((2*Screen.width) / 3, Screen.height / 2, 0));
 		Text[] QuestTexts = QuestShowBox.GetComponentsInChildren<Text>();
 		foreach (Text to in QuestTexts)
@@ -363,6 +535,7 @@ public class QuestManager : MonoBehaviour {
 	public void CloseCurrentQuestWindow(){
 		player.isPaused = false;
 		QuestShowBox.SetActive (false);
+		ActivateUI ();
 	}
 
 	public void ShowStartQuest(){
@@ -395,6 +568,7 @@ public class QuestManager : MonoBehaviour {
 
 
 	public void StartQuest(){
+		QBoxButton.interactable = true;
 		TaskStarted.SetActive (true);
 		QuestShow.SetActive (false);
 		//fazer switch com a escolha dos pais - botão ou pin		Default: botão

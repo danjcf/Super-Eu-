@@ -14,17 +14,9 @@ public class MainGameManager : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		print ("Entrou Enable");
 		Controller.LoadGame ();
 	}
-
-
-	void OnDisable(){
-		print ("Entrou disable");
-
-
-	}
-
+		
 	public void QuitGame(){
 		StartCoroutine (SaveAll ());
 		#if UNITY_EDITOR
@@ -34,6 +26,10 @@ public class MainGameManager : MonoBehaviour {
 		//Quit the application
 		Application.Quit();
 		#endif
+	}
+
+	public void SaveGame(){
+		StartCoroutine (SaveAll ());
 	}
 
 	IEnumerator SaveAll(){
